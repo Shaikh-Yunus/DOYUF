@@ -2,7 +2,7 @@ import Constant from "./Constant"
 
 const GlobalStyles = {
     wrapper: {
-        flex: 1
+        padding: 20
     },
     alignMiddle: {
         justifyContent: 'center',
@@ -10,7 +10,6 @@ const GlobalStyles = {
     },
     container: {
         flex: 1,
-        padding: 20,
         backgroundColor: Constant.colors.bodyBg,
     },
     inputContainer: {
@@ -27,6 +26,10 @@ const GlobalStyles = {
         fontSize: 16,
         color: '#000',
     },
+    backgroundImage: {
+        height: '100%',
+        width: '100%'
+    }
 }
 
 export default GlobalStyles

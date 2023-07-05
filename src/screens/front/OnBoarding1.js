@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import OnBoarding2 from './OnBoarding2';
+import LoginScreen from './LoginScreen';
 
 const OnBoarding1 = () => {
     const slides = [
@@ -9,21 +10,21 @@ const OnBoarding1 = () => {
             key: 1,
             title: 'Title 1',
             text: 'Description.\nSay something cool',
-            image: require('../../assets/images/Woman1.png'),
+            image: require('../../assets/images/Onboarding-1.png'),
             backgroundColor: '#59b2ab',
         },
         {
             key: 2,
             title: 'Title 2',
             text: 'Other cool stuff',
-            image: require('../../assets/images/couple.png'),
+            image: require('../../assets/images/Onboarding-2.png'),
             backgroundColor: '#febe29',
         },
         {
             key: 3,
             title: 'Rocket guy',
             text: "I'm already out of descriptions\n\nLorem ipsum bla bla bla",
-            image: require('../../assets/images/couple.png'),
+            image: require('../../assets/images/Onboarding-3.png'),
             backgroundColor: '#22bcb5',
         },
     ];
@@ -58,7 +59,7 @@ const OnBoarding1 = () => {
     };
 
     if (showRealApp) {
-        return <OnBoarding2 />;
+        return <LoginScreen />;
     } else {
         return (
             <View style={styles.container}>
@@ -71,12 +72,12 @@ const OnBoarding1 = () => {
                         backgroundColor: 'black',
                         width: 30
                     }}
-                    renderNextButton={() => buttonLabel("next")}
-                    renderSkipButton={() => buttonLabel("skip")}
-                    renderDoneButton={() => buttonLabel("done")}
-                    // onDone={() => {
-                    //     setShowRealApp(true)
-                    // }}
+                // renderNextButton={() => buttonLabel("next")}
+                // renderSkipButton={() => buttonLabel("skip")}
+                // renderDoneButton={() => buttonLabel("done")}
+                // onDone={() => {
+                //     setShowRealApp(true)
+                // }}
                 />
             </View>
         );

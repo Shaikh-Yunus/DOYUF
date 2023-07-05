@@ -7,7 +7,7 @@ const Constant = {
     height: Dimensions.get('window').height,
     colors: {
         primaryColor: '#c89858',
-        bodyBg: '#F2F3F5',
+        bodyBg: '#FFFFFF',
         inputBgColor: '#F5FFFA',
         textColor: '#000000',
         whiteColor: '#FFFFFF',
