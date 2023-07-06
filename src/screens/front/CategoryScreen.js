@@ -12,7 +12,7 @@ const CustomButton = ({ text }) => {
 };
 const CategoryScreen = () => {
     return (
-        <View style={GlobalStyles.container}>
+         <View style={GlobalStyles.container}>
             <ImageBackground
                 source={Images.couple}
                 style={GlobalStyles.backgroundImage}
