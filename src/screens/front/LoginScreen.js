@@ -7,25 +7,27 @@ import Images from '../../assets/images/Images';
 const LoginScreen = () => {
     return (
         <View style={GlobalStyles.container}>
-            <Text style={styles.title}>Enter your Email or {'\n'}Phone number</Text>
+            <View style={GlobalStyles.wrapper}>
+                <Text style={styles.title}>Enter your Email or {'\n'}Phone number</Text>
 
-            <View style={styles.inputContainer}>
-                <Image source={Images.uaeFlag} style={styles.flagIcon} />
-                <Text style={styles.phoneCode}>+971</Text>
-                <TextInput style={styles.textInput} placeholder="EMAIL OR PHONE*" />
-            </View>
+                <View style={styles.inputContainer}>
+                    <Image source={Images.uaeFlag} style={styles.flagIcon} />
+                    <Text style={styles.phoneCode}>+971</Text>
+                    <TextInput style={styles.textInput} placeholder="EMAIL OR PHONE*" />
+                </View>
 
-            {/* <View style={styles.inputContainer}>
+                {/* <View style={styles.inputContainer}>
                 <TextInput style={styles.textInput} placeholder="Password" secureTextEntry={true} />
             </View> */}
 
-            <Text style={styles.forgotPassword}>Forgot password?</Text>
-            <View style={{ marginTop: 20 }}>
-                <Button text='SIGN IN' />
-            </View>
-            <View style={[GlobalStyles.alignMiddle, { flexDirection: 'row', marginTop: 10 }]}>
-                <Text style={{ color: Constant.colors.textColor }}>Don't have an account?</Text>
-                <Text style={{ color: Constant.colors.textColor, fontWeight: 'bold' }}>Register</Text>
+                <Text style={styles.forgotPassword}>Forgot password?</Text>
+                <View style={{ marginTop: 20 }}>
+                    <Button text='SIGN IN' />
+                </View>
+                <View style={[GlobalStyles.alignMiddle, { flexDirection: 'row', marginTop: 10 }]}>
+                    <Text style={{ color: Constant.colors.textColor }}>Don't have an account?</Text>
+                    <Text style={{ color: Constant.colors.textColor, fontWeight: 'bold' }}>Register</Text>
+                </View>
             </View>
         </View >
     );

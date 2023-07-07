@@ -8,16 +8,25 @@ import OTPScreen from './src/screens/front/OTPScreen'
 import LanguageScreen from './src/screens/front/LanguageScreen'
 import CountryScreen from './src/screens/front/CountryScreen'
 import CategoryScreen from './src/screens/front/CategoryScreen'
+import HomeScreen from './src/screens/back/Home/HomeScreen'
+import BackHeader from './src/components/BackHeader'
+import BottomTab from './src/components/BottomTab'
+import RenderProducts from './src/screens/back/Home/RenderProducts'
 
 const App = () => {
   return (
     // <OnBoarding1 />
     // <LanguageScreen />
     // <CountryScreen />
-    <CategoryScreen />
+    // <CategoryScreen />
     // <OnBoarding2 />
     // <LoginScreen />
     // <OTPScreen />
+    // <HomeScreen />
+    // <BackHeader />
+    // <HomeScreen />
+    <RenderProducts />
+    // <BottomTab />
     // <RegisterScreen />
   )
 }

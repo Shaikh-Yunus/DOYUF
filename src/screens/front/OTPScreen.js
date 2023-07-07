@@ -15,45 +15,47 @@ const OTPScreen = () => {
     };
     return (
         <View style={GlobalStyles.container}>
-            <Text style={styles.title}>Enter your Email or {'\n'}Phone number</Text>
-            <View style={{ flexDirection: 'row' }}>
-                <Text style={styles.subTitle}>Didn't receive the OTP?</Text>
-                <Text style={styles.subTitleTwo}>Resend</Text>
-            </View>
+            <View style={GlobalStyles.wrapper}>
+                <Text style={styles.title}>Enter your Email or {'\n'}Phone number</Text>
+                <View style={{ flexDirection: 'row' }}>
+                    <Text style={styles.subTitle}>Didn't receive the OTP?</Text>
+                    <Text style={styles.subTitleTwo}>Resend</Text>
+                </View>
 
-            <View style={styles.container}>
-                <TextInput
-                    style={styles.input}
-                    value={otp[0]}
-                    onChangeText={(value) => handleOtpChange(value, 0)}
-                    maxLength={1}
-                    keyboardType="numeric"
-                />
-                <TextInput
-                    style={styles.input}
-                    value={otp[1]}
-                    onChangeText={(value) => handleOtpChange(value, 1)}
-                    maxLength={1}
-                    keyboardType="numeric"
-                />
-                <TextInput
-                    style={styles.input}
-                    value={otp[2]}
-                    onChangeText={(value) => handleOtpChange(value, 2)}
-                    maxLength={1}
-                    keyboardType="numeric"
-                />
-                <TextInput
-                    style={styles.input}
-                    value={otp[3]}
-                    onChangeText={(value) => handleOtpChange(value, 3)}
-                    maxLength={1}
-                    keyboardType="numeric"
-                />
-            </View>
+                <View style={styles.container}>
+                    <TextInput
+                        style={styles.input}
+                        value={otp[0]}
+                        onChangeText={(value) => handleOtpChange(value, 0)}
+                        maxLength={1}
+                        keyboardType="numeric"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        value={otp[1]}
+                        onChangeText={(value) => handleOtpChange(value, 1)}
+                        maxLength={1}
+                        keyboardType="numeric"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        value={otp[2]}
+                        onChangeText={(value) => handleOtpChange(value, 2)}
+                        maxLength={1}
+                        keyboardType="numeric"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        value={otp[3]}
+                        onChangeText={(value) => handleOtpChange(value, 3)}
+                        maxLength={1}
+                        keyboardType="numeric"
+                    />
+                </View>
 
-            <View style={{ marginTop: 20 }}>
-                <Button text='VERIFY' />
+                <View style={{ marginTop: 20 }}>
+                    <Button text='VERIFY' />
+                </View>
             </View>
         </View >
     )
