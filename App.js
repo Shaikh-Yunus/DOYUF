@@ -12,6 +12,7 @@ import HomeScreen from './src/screens/back/Home/HomeScreen'
 import BackHeader from './src/components/BackHeader'
 import BottomTab from './src/components/BottomTab'
 import RenderProducts from './src/screens/back/Home/RenderProducts'
+import FrontHead from './src/components/FrontHead'
 
 const App = () => {
   return (
@@ -25,7 +26,8 @@ const App = () => {
     // <HomeScreen />
     // <BackHeader />
     // <HomeScreen />
-    <RenderProducts />
+    // <RenderProducts />
+    <FrontHead />
     // <BottomTab />
     // <RegisterScreen />
   )
