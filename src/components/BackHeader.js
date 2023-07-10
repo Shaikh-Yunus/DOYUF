@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Image, StyleSheet, Text, TextInput, View, Pressable } from 'react-native'
 import React from 'react'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
@@ -7,13 +7,14 @@ import Feather from 'react-native-vector-icons/Feather'
 import GlobalStyles from '../shared/GlobalStyles'
 import Images from '../assets/images/Images'
 import Constant from '../shared/Constant'
-const BackHeader = () => {
+const BackHeader = ({ Onpress }) => {
+    console.log("onpress", Onpress);
     return (
         <View>
             <View style={styles.HeaderContainer}>
-                <View style={{ flex: 1 }}>
+                <Pressable onPress={Onpress} style={{ flex: 1 }}>
                     <FontAwesome5 name='bars' size={25} color="black" />
-                </View>
+                </Pressable>
                 <View style={{ flex: 2 }}>
                     <Image source={Images.logo} style={styles.logo} resizeMode="contain" />
                 </View>

@@ -17,7 +17,7 @@ const HomeScreen = () => {
         { id: '2', category: 'MEN', image: Images.men1 },
         { id: '3', category: 'BAGS', image: Images.bag2 },
         { id: '4', category: 'SUNGLASSES', image: Images.glasses1 },
-        { id: '5', category: 'SHOES', image: Images.women },
+        { id: '5', category: 'SHOES', image: Images.Shoes },
     ];
 
     const renderItem = ({ item }) => (
@@ -30,75 +30,76 @@ const HomeScreen = () => {
     return (
         <View style={GlobalStyles.container}>
             <BackHeader />
-            <ScrollView style={{ flex: 1, height: '100%' }}>
-                <View >
-                    <View style={GlobalStyles.wrapper}>
-                        <FlatList
-                            data={data}
-                            renderItem={renderItem}
-                            keyExtractor={(item) => item.id}
-                            horizontal
-                        />
-                        <SwiperComponent />
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Image source={Images.bag1} style={{ height: 150, width: 150 }} />
-                            <Image source={Images.bag1} style={{ height: 150, width: 150 }} />
-                        </View>
-                    </View>
-                    <View stlye={{}}>
-                        <Image source={Images.banner} style={{ marginTop: 20, width: '100%', height: 100 }} />
-                    </View>
-                    <View style={GlobalStyles.wrapper}>
-                        <View>
-                            <SubHeading text='SHOP BY CATEGORY' />
-                        </View>
-                        <View style={{ marginTop: 20 }}>
-                            <Category />
-                        </View>
-                    </View>
-                    <View style={GlobalStyles.wrapper}>
-
-                        <View>
-                            <Image source={Images.banner2} style={{ height: 150, width: '100%' }} />
-                        </View>
-                        <View>
-                            <SubHeading text='PREMIUM COLLECTION' />
-                        </View>
-                        <View style={{ marginTop: 20 }}>
-                            <CategoryTwo />
-                        </View>
-                        <View>
-                            <SubHeading text='YOUR FAVOURITE LABELS' />
-                        </View>
-                        <View style={{ marginTop: 20 }}>
-                            <Label />
-                        </View>
-                        <View>
-                            <SubHeading text='EXCLUSIVELY ON DOYUF' />
-                        </View>
-                        <View style={{ marginTop: 20 }}>
-                            <CategoryThree />
-                        </View>
-                        <View>
-                            <SubHeading text='TOP LABELS' />
-                        </View>
-                        <View style={{ marginTop: 20 }}>
-                            <CategoryFour />
-                        </View>
-                    </View>
+            <ScrollView style={{ flex: 1, }}>
+                {/* <View > */}
+                <View style={GlobalStyles.wrapper}>
+                    <FlatList
+                        data={data}
+                        renderItem={renderItem}
+                        keyExtractor={(item) => item.id}
+                        horizontal
+                    />
+                </View>
+                <SwiperComponent />
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Image source={Images.WhiteBag} style={{ height: 100, width: '45%' }} />
+                    <Image source={Images.BlackBag} style={{ height: 100, width: '45%' }} />
+                </View>
+                <View style={{ borderWidth: 0.5, marginTop: 30, color: 'lightGrey', marginHorizontal: 100 }}></View>
+                <View stlye={{}}>
+                    <Image source={Images.banner} style={{ marginTop: 20, width: '100%', height: 130 }} />
+                </View>
+                <View style={GlobalStyles.wrapper}>
                     <View>
-                        <Image source={Images.banner3} style={{ height: 100, width: '100%' }} resizeMode='contain' />
+                        <SubHeading text='SHOP BY CATEGORY' />
                     </View>
-                    <View style={GlobalStyles.wrapper}>
-
-                        <View>
-                            <SubHeading text='THE DOYUF BRAND PROMISE' />
-                        </View>
-                        <View style={{}}>
-                            <IconsGroup />
-                        </View>
+                    <View style={{ marginTop: 20 }}>
+                        <Category />
                     </View>
                 </View>
+                <View style={GlobalStyles.wrapper}>
+
+                    <View>
+                        <Image source={Images.banner2} style={{ height: 150, width: '100%' }} />
+                    </View>
+                    <View>
+                        <SubHeading text='PREMIUM COLLECTION' />
+                    </View>
+                    <View style={{ marginTop: 20 }}>
+                        <CategoryTwo />
+                    </View>
+                    <View>
+                        <SubHeading text='YOUR FAVOURITE LABELS' />
+                    </View>
+                    <View style={{ marginTop: 20 }}>
+                        <Label />
+                    </View>
+                    <View>
+                        <SubHeading text='EXCLUSIVELY ON DOYUF' />
+                    </View>
+                    <View style={{ marginTop: 20 }}>
+                        <CategoryThree />
+                    </View>
+                    <View>
+                        <SubHeading text='TOP LABELS' />
+                    </View>
+                    <View style={{ marginTop: 20 }}>
+                        <CategoryFour />
+                    </View>
+                </View>
+                <View>
+                    <Image source={Images.banner3} style={{ height: 100, width: '100%' }} resizeMode='contain' />
+                </View>
+                <View style={GlobalStyles.wrapper}>
+
+                    <View>
+                        <SubHeading text='THE DOYUF BRAND PROMISE' />
+                    </View>
+                    <View style={{}}>
+                        <IconsGroup />
+                    </View>
+                </View>
+                {/* </View> */}
             </ScrollView>
 
 

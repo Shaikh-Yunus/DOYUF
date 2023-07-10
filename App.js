@@ -19,12 +19,14 @@ import AccountScreen from './src/screens/back/Account/AccountScreen'
 import { CustomerStack, WishListStack, CartStack, AccountStack } from './src/navigation/CustomerStack'
 import { NavigationContainer } from '@react-navigation/native'
 import BottomTabStack from './src/navigation/BottomTabStack'
+import DrawerScreen from './src/screens/back/Home/DrawerScreen'
 
 const App = () => {
   return (
     <NavigationContainer>
       {/* <CustomerStack /> */}
       <BottomTabStack />
+      {/* <DrawerScreen /> */}
     </NavigationContainer>
   )
 }

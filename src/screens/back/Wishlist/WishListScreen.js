@@ -6,6 +6,7 @@ import Images from '../../../assets/images/Images'
 import Constant from '../../../shared/Constant'
 import Button from '../../../components/Button'
 import BottomTab from '../../../components/BottomTab'
+import ScreenHeading from '../../../components/ScreenHeading'
 
 const WishListScreen = () => {
     const wishlistData = [
@@ -53,23 +54,10 @@ const WishListScreen = () => {
     return (
         <View style={GlobalStyles.container}>
             <FrontHead />
-            <View style={{
-                // flexDirection: 'row',
-                // padding: 20,
-                paddingVertical: 10,
-                margin: 20,
-                borderBottomWidth: 0.5,
-                borderColor: 'grey',
-            }}>
-                <Text
-                    style={{
-                        fontFamily: Constant.fontFamily,
-                        color: Constant.colors.textColor
-                    }}
-                >
-                    Home / My Wishlist
-                </Text>
+            <View style={{ paddingHorizontal: 20, marginTop: 10 }}>
+                <ScreenHeading text="Home / My Wishlist" />
             </View>
+
             <View style={{
                 flex: 1,
                 // padding: 20
