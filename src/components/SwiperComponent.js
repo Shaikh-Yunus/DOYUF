@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Images from '../assets/images/Images';
+import Constant from '../shared/Constant';
 
 const SwiperComponent = () => {
     // Data for each swiper
@@ -50,5 +51,6 @@ const styles = StyleSheet.create({
     swiperText: {
         fontSize: 20,
         fontWeight: 'bold',
+        fontFamily: Constant.fontFamily
     },
 });

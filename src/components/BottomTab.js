@@ -12,7 +12,8 @@ const BottomTab = () => {
                 flexDirection: 'row',
                 justifyContent: 'space-around',
                 // postition:'absolute'
-                paddingVertical: 15
+                // paddingVertical: 15
+                height:40,
             }}>
                 <FontAwesome name='home' size={25} color={Constant.colors.primaryColor} style={{ marginHorizontal: 10 }} />
                 <AntDesign name='heart' size={25} color={Constant.colors.primaryColor} style={{ marginHorizontal: 10 }} />

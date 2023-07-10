@@ -12,7 +12,7 @@ const Constant = {
         textColor: '#000000',
         whiteColor: '#FFFFFF',
     },
-    fontFamily: 'Avenir-Light',
+    fontFamily: 'AvenirNextLTPro-Bold',
     borderRadius: 10,
     padding: 18,
     margin: 18,

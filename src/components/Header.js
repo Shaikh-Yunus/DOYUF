@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import Constant from '../shared/Constant';
 const Header = () => {
     return (
         <View style={styles.container}>
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: 'black',
         fontWeight: 'bold',
+        fontFamily: Constant.fontFamily
     },
 });
 

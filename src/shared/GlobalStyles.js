@@ -8,6 +8,10 @@ const GlobalStyles = {
         justifyContent: 'center',
         alignItems: 'center'
     },
+    spaceBetweenRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
     container: {
         flex: 1,
         backgroundColor: Constant.colors.bodyBg,
@@ -25,10 +29,14 @@ const GlobalStyles = {
         // flex: 1,
         fontSize: 16,
         color: '#000',
+        fontFamily:Constant.fontFamily
     },
     backgroundImage: {
         height: '100%',
         width: '100%'
+    },
+    Avenir: {
+        fontFamily: 'AvenirNextLTPro-Bold'
     }
 }
 

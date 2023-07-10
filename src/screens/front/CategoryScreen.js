@@ -2,6 +2,7 @@ import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react
 import React from 'react'
 import GlobalStyles from '../../shared/GlobalStyles'
 import Images from '../../assets/images/Images'
+import Constant from '../../shared/Constant';
 
 const CustomButton = ({ text }) => {
     return (
@@ -12,7 +13,7 @@ const CustomButton = ({ text }) => {
 };
 const CategoryScreen = () => {
     return (
-         <View style={GlobalStyles.container}>
+        <View style={GlobalStyles.container}>
             <ImageBackground
                 source={Images.couple}
                 style={GlobalStyles.backgroundImage}
@@ -49,7 +50,8 @@ const styles = StyleSheet.create({
         // borderRadius: 8,
     },
     buttonText: {
-        color: 'black',
+        color: Constant.colors.textColor,
         fontWeight: 'bold',
+        fontFamily: Constant.fontFamily
     },
 })

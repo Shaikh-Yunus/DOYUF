@@ -1,6 +1,7 @@
 import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import Images from '../../assets/images/Images'
+import Constant from '../../shared/Constant'
 
 const LanguageScreen = () => {
     return (
@@ -43,8 +44,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     buttonText: {
-        color: 'black',
+        color: Constant.colors.textColor,
         fontSize: 16,
         fontWeight: 'bold',
+        fontFamily: Constant.fontFamily
     },
 })

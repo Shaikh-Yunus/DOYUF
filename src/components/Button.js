@@ -11,6 +11,7 @@ const Button = ({ text }) => {
             <Text style={{
                 color: Constant.colors.whiteColor,
                 // textTransform: 'capitalize'
+                fontFamily: Constant.fontFamily
             }}>{text}</Text>
         </View>
     )
