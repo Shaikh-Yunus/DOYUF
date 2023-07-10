@@ -25,9 +25,9 @@ const App = () => {
     // <OTPScreen />
     // <HomeScreen />
     // <BackHeader />
-    // <HomeScreen />
+    <HomeScreen />
     // <RenderProducts />
-    <FrontHead />
+    // <FrontHead />
     // <BottomTab />
     // <RegisterScreen />
   )
