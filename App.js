@@ -13,23 +13,21 @@ import BackHeader from './src/components/BackHeader'
 import BottomTab from './src/components/BottomTab'
 import RenderProducts from './src/screens/back/Home/RenderProducts'
 import FrontHead from './src/components/FrontHead'
+import CartScreen from './src/screens/back/Cart/CartScreen'
+import WishListScreen from './src/screens/back/Wishlist/WishListScreen'
+import AccountScreen from './src/screens/back/Account/AccountScreen'
+import { CustomerStack, WishListStack, CartStack, AccountStack } from './src/navigation/CustomerStack'
+import { NavigationContainer } from '@react-navigation/native'
+import BottomTabStack from './src/navigation/BottomTabStack'
+import DrawerScreen from './src/screens/back/Home/DrawerScreen'
 
 const App = () => {
   return (
-    // <OnBoarding1 />
-    // <LanguageScreen />
-    // <CountryScreen />
-    // <CategoryScreen />
-    // <OnBoarding2 />
-    // <LoginScreen />
-    // <OTPScreen />
-    // <HomeScreen />
-    // <BackHeader />
-    <HomeScreen />
-    // <RenderProducts />
-    // <FrontHead />
-    // <BottomTab />
-    // <RegisterScreen />
+    <NavigationContainer>
+      {/* <CustomerStack /> */}
+      <BottomTabStack />
+      {/* <DrawerScreen /> */}
+    </NavigationContainer>
   )
 }
 

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
 import Images from '../../assets/images/Images';
 import GlobalStyles from '../../shared/GlobalStyles';
 import Header from '../../components/Header';
+import Constant from '../../shared/Constant';
 
 const CountryScreen = () => {
     const data = [
@@ -56,8 +57,9 @@ const styles = StyleSheet.create({
         marginRight: 8,
     },
     countryName: {
-        color: 'black',
+        color: Constant.colors.textColor,
         fontSize: 16,
+        fontFamily: Constant.fontFamily
     },
 });
 

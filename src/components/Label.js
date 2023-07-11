@@ -38,24 +38,24 @@ const IconsGroup = () => {
             <View style={styles.row}>
                 <View style={styles.circle}>
                     <Image source={Icons.Icon1} style={styles.icon} resizeMode="contain" />
-                    <Text style={styles.text}>Free</Text>
-                    <Text style={styles.text}>Shipping</Text>
+                    <Text style={styles.text}>FREE</Text>
+                    <Text style={styles.text}>SHIPPING</Text>
                 </View>
                 <View style={styles.circle}>
                     <Image source={Icons.Icon2} style={styles.icon} resizeMode="contain" />
-                    <Text style={styles.text}>Safe</Text>
-                    <Text style={styles.text}>Delivery</Text>
+                    <Text style={styles.text}>SAFE</Text>
+                    <Text style={styles.text}>DELIVERY</Text>
                 </View>
             </View>
             <View style={styles.row}>
                 <View style={styles.circle}>
                     <Image source={Icons.Icon3} style={styles.icon} resizeMode="contain" />
-                    <Text style={styles.text}>Trusted</Text>
-                    <Text style={styles.text}>Platform</Text>
+                    <Text style={styles.text}>TRUSTED</Text>
+                    <Text style={styles.text}>PLATFORM</Text>
                 </View>
                 <View style={styles.circle}>
                     <Image source={Icons.Icon4} style={styles.icon} resizeMode="contain" />
-                    <Text style={styles.text}>Enquiry</Text>
+                    <Text style={styles.text}>ENQUIRY</Text>
                 </View>
             </View>
         </View>
@@ -104,7 +104,8 @@ const styles = StyleSheet.create({
         color: 'black',
         fontWeight: 'bold',
         textAlign: 'center',
-        fontSize: 20
+        fontSize: 18,
+        fontFamily: Constant.fontFamily
     },
 });
 

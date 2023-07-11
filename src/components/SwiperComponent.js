@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Images from '../assets/images/Images';
+import Constant from '../shared/Constant';
 
 const SwiperComponent = () => {
     // Data for each swiper
@@ -25,7 +26,13 @@ const SwiperComponent = () => {
 
 
     return (
-        <Swiper style={styles.container}>{renderSwiperItem()}</Swiper>
+        <Swiper
+            dot={<View style={styles.dot} />}
+            activeDot={<View style={[styles.dot, styles.activeDot]} />}
+
+        >
+            {renderSwiperItem()}
+        </Swiper>
     );
 };
 
@@ -33,14 +40,15 @@ export default SwiperComponent;
 
 const styles = StyleSheet.create({
     container: {
-        height: 300,
-        // width: 313
+        height: 100,
+        width: 100
     },
     swiperItem: {
-        flex: 1,
+        // height: 150,
+        // flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor: '#ccc',
+        backgroundColor: '#fff',
     },
     swiperImage: {
         width: '100%',
@@ -50,5 +58,19 @@ const styles = StyleSheet.create({
     swiperText: {
         fontSize: 20,
         fontWeight: 'bold',
+        fontFamily: Constant.fontFamily
+    },
+    dot: {
+        width: 25,
+        height: 5,
+        borderRadius: 5,
+        backgroundColor: 'grey',
+        marginLeft: 3,
+        marginRight: 3,
+        marginTop: 3,
+        marginBottom: 3,
+    },
+    activeDot: {
+        backgroundColor: Constant.colors.primaryColor,
     },
 });

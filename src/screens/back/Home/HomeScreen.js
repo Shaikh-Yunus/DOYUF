@@ -13,11 +13,11 @@ import { Category, CategoryFour, CategoryThree, CategoryTwo } from '../../../com
 import { Label, IconsGroup } from '../../../components/Label';
 const HomeScreen = () => {
     const data = [
-        { id: '1', category: 'Women', image: Images.Women1 },
-        { id: '2', category: 'Men', image: Images.men1 },
-        { id: '3', category: 'Bags', image: Images.bag2 },
-        { id: '4', category: 'Sunglasses', image: Images.glasses1 },
-        { id: '5', category: 'Shoes', image: Images.women },
+        { id: '1', category: 'WOMEN', image: Images.Women1 },
+        { id: '2', category: 'MEN', image: Images.men1 },
+        { id: '3', category: 'BAGS', image: Images.bag2 },
+        { id: '4', category: 'SUNGLASSES', image: Images.glasses1 },
+        { id: '5', category: 'SHOES', image: Images.Shoes },
     ];
 
     const renderItem = ({ item }) => (
@@ -30,7 +30,8 @@ const HomeScreen = () => {
     return (
         <View style={GlobalStyles.container}>
             <BackHeader />
-            <ScrollView style={{ flex: 1, height: '100%' }}>
+            <ScrollView style={{ flex: 1, }}>
+                {/* <View > */}
                 <View style={GlobalStyles.wrapper}>
                     <FlatList
                         data={data}
@@ -38,25 +39,33 @@ const HomeScreen = () => {
                         keyExtractor={(item) => item.id}
                         horizontal
                     />
-                    <SwiperComponent />
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Image source={Images.bag1} style={{ height: 150, width: 150 }} />
-                        <Image source={Images.bag1} style={{ height: 150, width: 150 }} />
-                    </View>
-                    <View stlye={{}}>
-                        <Image source={Images.banner} style={{ marginTop: 20, width: '100%', height: 100 }} />
-                    </View>
+                </View>
+                <View style={{height:300 , width:'100%', marginBottom:20}}>
+                <SwiperComponent />
+                </View>
+                <View style={{ flexDirection: 'row', justifyContent:'space-evenly' }}>
+                    <Image source={Images.WhiteBag} style={{ height: 100, width: '45%' }} />
+                    <Image source={Images.BlackBag} style={{ height: 100, width: '45%' }} />
+                </View>
+                <View style={{ borderWidth: 0.5, marginTop: 30, color: 'lightGrey', marginHorizontal: 100 }}></View>
+                <View style={{ }}>
+                    <Image source={Images.banner} style={{ marginTop: 20, width: '100%', height: 150 }} />
+                </View>
+                <View style={GlobalStyles.wrapper}>
                     <View>
-                        <SubHeading text='SHOP BY CATEGORY' />
+                        <SubHeading    text='SHOP BY CATEGORY' />
                     </View>
                     <View style={{ marginTop: 20 }}>
                         <Category />
                     </View>
+                </View>
+                <View style={GlobalStyles.wrapper}>
+
                     <View>
                         <Image source={Images.banner2} style={{ height: 150, width: '100%' }} />
                     </View>
                     <View>
-                        <SubHeading text='Premium Collection' />
+                        <SubHeading text='PREMIUM COLLECTION' />
                     </View>
                     <View style={{ marginTop: 20 }}>
                         <CategoryTwo />
@@ -79,23 +88,27 @@ const HomeScreen = () => {
                     <View style={{ marginTop: 20 }}>
                         <CategoryFour />
                     </View>
-                    <View>
-                        <Image source={Images.banner3} style={{ height: 100, width: '100%' }} resizeMode='contain' />
-                    </View>
+                </View>
+                <View>
+                    <Image source={Images.banner3} style={{ height: 100, width: '100%' }} resizeMode='contain' />
+                </View>
+                <View style={GlobalStyles.wrapper}>
+
                     <View>
                         <SubHeading text='THE DOYUF BRAND PROMISE' />
                     </View>
-                    <View>
+                    <View style={{}}>
                         <IconsGroup />
                     </View>
                 </View>
+                {/* </View> */}
             </ScrollView>
 
 
 
-            <View style={{ flex: 0 }}>
+            {/* <View style={{ flex: 0 }}>
                 <BottomTab />
-            </View>
+            </View> */}
         </View>
     );
 };
@@ -122,8 +135,10 @@ const styles = StyleSheet.create({
     },
     category: {
         fontSize: 16,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         textAlign: 'center',
+        color: Constant.colors.textColor,
+        fontFamily: Constant.fontFamily
     },
 });
 
