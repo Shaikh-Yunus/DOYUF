@@ -134,11 +134,11 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     category: {
-        fontSize: 16,
+        fontSize: 12,
         // fontWeight: 'bold',
         textAlign: 'center',
         color: Constant.colors.textColor,
-        fontFamily: Constant.fontFamily
+        fontFamily: 'AvenirNextLTPro-Medium'
     },
 });
 
