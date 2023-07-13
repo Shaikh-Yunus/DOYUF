@@ -55,6 +55,7 @@ const Images = {
     Brand4: require('./Brand4.png'),
     Brand5: require('./Brand5.png'),
     Brand6: require('./Brand6.png'),
+    Brandnamebg : require('./brandnamebg.png')
 
 }
 export default Images

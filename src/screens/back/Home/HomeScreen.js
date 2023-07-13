@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image, ScrollView, ImageBackground } from 'react-native';
 import Images from '../../../assets/images/Images';
 import Constant from '../../../shared/Constant';
 import GlobalStyles from '../../../shared/GlobalStyles';
@@ -40,20 +40,20 @@ const HomeScreen = () => {
                         horizontal
                     />
                 </View>
-                <View style={{height:300 , width:'100%', marginBottom:20}}>
-                <SwiperComponent />
+                <View style={{ height: 300, width: '100%', marginBottom: 20 }}>
+                    <SwiperComponent />
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent:'space-evenly' }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
                     <Image source={Images.WhiteBag} style={{ height: 100, width: '45%' }} />
                     <Image source={Images.BlackBag} style={{ height: 100, width: '45%' }} />
                 </View>
                 <View style={{ borderWidth: 0.5, marginTop: 30, color: 'lightGrey', marginHorizontal: 100 }}></View>
-                <View style={{ }}>
+                <View style={{}}>
                     <Image source={Images.banner} style={{ marginTop: 20, width: '100%', height: 150 }} />
                 </View>
                 <View style={GlobalStyles.wrapper}>
                     <View>
-                        <SubHeading    text='SHOP BY CATEGORY' />
+                        <SubHeading text='SHOP BY CATEGORY' />
                     </View>
                     <View style={{ marginTop: 20 }}>
                         <Category />
@@ -100,6 +100,10 @@ const HomeScreen = () => {
                     <View style={{}}>
                         <IconsGroup />
                     </View>
+                </View>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    <ImageBackground source={Images.Brandnamebg} style={{ height: 60, width: '100%', marginBottom: 20 }} />
+                    <Text style={{ color: '#C39A59', position: 'absolute', alignSelf: 'center' , fontSize:30 , }}>Gucci</Text>
                 </View>
                 {/* </View> */}
             </ScrollView>
