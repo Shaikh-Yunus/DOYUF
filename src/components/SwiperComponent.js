@@ -7,11 +7,14 @@ import Constant from '../shared/Constant';
 const SwiperComponent = () => {
     // Data for each swiper
     const data = [
-        { id: 1, image: Images.swiper1 },
-        { id: 2, image: Images.swiper2 },
-        { id: 3, image: Images.swiper1 },
-        { id: 4, image: Images.swiper2 },
-        { id: 5, image: Images.swiper1 },
+        { id: 1, image: Images.Banner1 },
+        { id: 2, image: Images.Banner2 },
+        { id: 3, image: Images.Banner3 },
+        { id: 4, image: Images.Banner4 },
+        { id: 5, image: Images.Banner5 },
+        { id: 6, image: Images.Banner6 },
+        { id: 7, image: Images.Banner7 },
+        { id: 8, image: Images.Banner8 },
     ];
 
     // Render item for each swiper
@@ -39,16 +42,16 @@ const SwiperComponent = () => {
 export default SwiperComponent;
 
 const styles = StyleSheet.create({
-    container: {
-        height: 100,
-        width: 100
-    },
+    // container: {
+    //     height: 150,
+    //     width: 155
+    // },
     swiperItem: {
-        // height: 150,
-        // flex: 1,
+        height: 150,
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        // backgroundColor: '#ccc',
     },
     swiperImage: {
         width: '100%',

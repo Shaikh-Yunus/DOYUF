@@ -106,10 +106,10 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: 150,
+        height: 170,
     },
     title: {
-        padding: 10,
+        // padding: 10,
         color: '#fff',
         fontWeight: 'bold',
         backgroundColor: 'rgba(0, 0, 0, 0.5)',

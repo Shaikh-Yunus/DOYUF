@@ -6,7 +6,12 @@ const SubHeading = ({ text }) => {
     return (
         <View style={{ marginTop: 30, flexDirection: 'row' }}>
             <Text style={{ fontWeight: 'bold', color: Constant.colors.primaryColor, fontSize: 20 }}>|</Text>
-            <Text style={styles.sub_heading}>
+            <Text style={{
+                marginLeft: 10,
+                fontWeight: 'bold',
+                color: Constant.colors.textColor, fontSize: 18,
+                fontFamily: "AvenirNextLTPro-Bold"
+            }}>.font
                 {text}
             </Text>
 
@@ -16,12 +21,4 @@ const SubHeading = ({ text }) => {
 
 export default SubHeading
 
-const styles = StyleSheet.create({
-    sub_heading: {
-        marginLeft: 10,
-        // fontWeight: '700',
-        color: Constant.colors.textColor, 
-        fontSize: 18,
-        fontFamily: 'AvenirNextLTPro-Bold'
-    },
-})
+const styles = StyleSheet.create({})
