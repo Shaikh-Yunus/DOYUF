@@ -83,8 +83,12 @@ const HomeScreen = () => {
   );
   const [searchPress, setSearchPress] = useState(false);
   const [isSearchTouched, setIsSearchTouched] = useState(false);
+  console.log("this is isSearchTouched=>",isSearchTouched);
   const handleSearchInputTouch = () => {
     setIsSearchTouched(true);
+  };
+  const DefaultView = () => {
+    setIsSearchTouched(false);
   };
   const handleSearch = isSearching => {
     setSearchPress(isSearching);
@@ -192,109 +196,14 @@ const HomeScreen = () => {
   };
   return (
     <View style={GlobalStyles.container}>
-      <BackHeader onSearch={handleSearch} disable={true} />
-      {!searchPress && !isSearchTouched ? (
-        <View>
-          <Text>1</Text>
-        </View>
-      ) : (
-        <View>
-          <Text>2</Text>
-        </View>
-      )}
-      
-      {!searchPress ? (
-        <ScrollView style={{flex: 1}}>
-          <View style={GlobalStyles.wrapper}>
-            <FlatList
-              data={data}
-              renderItem={renderItem}
-              keyExtractor={item => item.id}
-              horizontal
-            />
-          </View>
-          <View style={{height: 350, width: '100%'}}>
-            <SwiperComponent />
-          </View>
-          <View style={{height: 100, width: '100%'}}>
-            <FlatList
-              data={dataTwo}
-              renderItem={renderItemTwo}
-              keyExtractor={item => item.id}
-              horizontal
-            />
-          </View>
+      <BackHeader
+        onSearch={handleSearch}
+        onPressSearch={handleSearchInputTouch}
+        defaultView={DefaultView}
+        disable={true}
+      />
 
-          <View
-            style={{
-              borderWidth: 0.5,
-              marginTop: 30,
-              color: 'lightGrey',
-              marginHorizontal: 100,
-            }}></View>
-          <View stlye={{}}>
-            <Image
-              source={Images.banner}
-              style={{marginTop: 20, width: '100%', height: 130}}
-            />
-          </View>
-          <View style={GlobalStyles.wrapper}>
-            <View>
-              <SubHeading text="SHOP BY CATEGORY" />
-            </View>
-            <View style={{marginTop: 20}}>
-              <Category />
-            </View>
-          </View>
-          <View style={GlobalStyles.wrapper}>
-            <View>
-              <Image
-                source={Images.banner2}
-                style={{height: 150, width: '100%'}}
-              />
-            </View>
-            <View>
-              <SubHeading text="PREMIUM COLLECTION" />
-            </View>
-            <View style={{marginTop: 20}}>
-              <CategoryTwo />
-            </View>
-            <View>
-              <SubHeading text="YOUR FAVOURITE LABELS" />
-            </View>
-            <View style={{marginTop: 20}}>
-              <Label />
-            </View>
-            <View>
-              <SubHeading text="EXCLUSIVELY ON DOYUF" />
-            </View>
-            <View style={{marginTop: 20}}>
-              <CategoryThree />
-            </View>
-            <View>
-              <SubHeading text="TOP LABELS" />
-            </View>
-            <View style={{marginTop: 20}}>
-              <CategoryFour />
-            </View>
-          </View>
-          <View>
-            <Image
-              source={Images.banner3}
-              style={{height: 100, width: '100%'}}
-              resizeMode="contain"
-            />
-          </View>
-          <View style={GlobalStyles.wrapper}>
-            <View>
-              <SubHeading text="THE DOYUF BRAND PROMISE" />
-            </View>
-            <View style={{}}>
-              <IconsGroup />
-            </View>
-          </View>
-        </ScrollView>
-      ) : (
+      {isSearchTouched == true ? (
         <ScrollView style={{flex: 1}}>
           <View style={GlobalStyles.wrapper}>
             <SubHeadingSearch text="RECENT SEARCHES" />
@@ -325,6 +234,108 @@ const HomeScreen = () => {
             <RenderProductsSearch />
           </View>
         </ScrollView>
+      ) : (
+        <View style={{flex: 1}}>
+          {!searchPress ? (
+            <ScrollView style={{flex: 1}}>
+              <View style={GlobalStyles.wrapper}>
+                <FlatList
+                  data={data}
+                  renderItem={renderItem}
+                  keyExtractor={item => item.id}
+                  horizontal
+                />
+              </View>
+              <View style={{height: 350, width: '100%'}}>
+                <SwiperComponent />
+              </View>
+              <View style={{height: 100, width: '100%'}}>
+                <FlatList
+                  data={dataTwo}
+                  renderItem={renderItemTwo}
+                  keyExtractor={item => item.id}
+                  horizontal
+                />
+              </View>
+
+              <View
+                style={{
+                  borderWidth: 0.5,
+                  marginTop: 30,
+                  color: 'lightGrey',
+                  marginHorizontal: 100,
+                }}></View>
+              <View stlye={{}}>
+                <Image
+                  source={Images.banner}
+                  style={{marginTop: 20, width: '100%', height: 130}}
+                />
+              </View>
+              <View style={GlobalStyles.wrapper}>
+                <View>
+                  <SubHeading text="SHOP BY CATEGORY" />
+                </View>
+                <View style={{marginTop: 20}}>
+                  <Category />
+                </View>
+              </View>
+              <View style={GlobalStyles.wrapper}>
+                <View>
+                  <Image
+                    source={Images.banner2}
+                    style={{height: 150, width: '100%'}}
+                  />
+                </View>
+                <View>
+                  <SubHeading text="PREMIUM COLLECTION" />
+                </View>
+                <View style={{marginTop: 20}}>
+                  <CategoryTwo />
+                </View>
+                <View>
+                  <SubHeading text="YOUR FAVOURITE LABELS" />
+                </View>
+                <View style={{marginTop: 20}}>
+                  <Label />
+                </View>
+                <View>
+                  <SubHeading text="EXCLUSIVELY ON DOYUF" />
+                </View>
+                <View style={{marginTop: 20}}>
+                  <CategoryThree />
+                </View>
+                <View>
+                  <SubHeading text="TOP LABELS" />
+                </View>
+                <View style={{marginTop: 20}}>
+                  <CategoryFour />
+                </View>
+              </View>
+              <View>
+                <Image
+                  source={Images.banner3}
+                  style={{height: 100, width: '100%'}}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={GlobalStyles.wrapper}>
+                <View>
+                  <SubHeading text="THE DOYUF BRAND PROMISE" />
+                </View>
+                <View style={{}}>
+                  <IconsGroup />
+                </View>
+              </View>
+            </ScrollView>
+          ) : (
+            <View style={{flex: 1}}>
+              <SubHeadingSearch text="SUGGESTIONS" />
+
+              <SubHeadingSearch text="PRODUCTS" />
+              <RenderProductsSearch />
+            </View>
+          )}
+        </View>
       )}
     </View>
   );
