@@ -66,7 +66,7 @@ export { Label, IconsGroup };
 const styles = StyleSheet.create({
     Labelcontainer: {
         flex: 1,
-        marginTop: 20,
+        // marginTop: 20,
         // paddingHorizontal: 10,
     },
     labelrow: {
@@ -75,8 +75,9 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     labelimage: {
+        borderRadius:8,
         width: '48%',
-        // height: 200,
+        height: 100,
     },
     container: {
         flex: 1,
@@ -102,10 +103,10 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'black',
-        // fontWeight: 'bold',
+        fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 18,
-        fontFamily: 'AvenirNextLTPro-Bold'
+        fontFamily: "AvenirNextLTPro-Bold"
     },
 });
 

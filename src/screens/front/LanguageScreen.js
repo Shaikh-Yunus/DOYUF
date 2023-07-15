@@ -2,8 +2,13 @@ import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image } from
 import React from 'react'
 import Images from '../../assets/images/Images'
 import Constant from '../../shared/Constant'
+import {useNavigation} from '@react-navigation/native'
 
 const LanguageScreen = () => {
+    const navigation = useNavigation()
+    const handleNavigate = () => {
+        navigation.navigate('CountryScreen')
+    }
     return (
         <View>
             <ImageBackground
@@ -14,7 +19,7 @@ const LanguageScreen = () => {
                     <Image source={Images.logo} style={{ height: 100, width: '100%' }} resizeMode='contain' />
                 </View>
                 <View style={[styles.buttonContainer]}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity onPress={handleNavigate} style={styles.button}>
                         <Text style={styles.buttonText}>English</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button}>

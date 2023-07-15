@@ -25,12 +25,12 @@ const BottomTabStack = ({ route, navigation }) => {
         return { display }
     }
     <Tab.Screen
-        name="Home"
+        name="CustomerStack"
         component={CustomerStack}
         options={({ route }) => ({ tabBarStyle: getTabBarStyle(route) })} />
     return (
 
-        <Tab.Navigator initialRouteName='Home'
+        <Tab.Navigator initialRouteName='CustomerStack'
             tabBarOptions={{
                 activeTintColor: Constant.colors.primaryColor,
                 inactiveTintColor: Constant.colors.primaryColor,
@@ -44,7 +44,7 @@ const BottomTabStack = ({ route, navigation }) => {
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
                     let rn = route.name;
-                    if (rn === "Home") {
+                    if (rn === "CustomerStack") {
                         iconName = focused ? 'home' : 'home'
                     }
 
@@ -69,7 +69,7 @@ const BottomTabStack = ({ route, navigation }) => {
                     return <User name={iconName} size={size} color={color} />
                 },
             })}>
-            <Tab.Screen options={{ headerShown: false, }} name="Home" component={CustomerStack} />
+            <Tab.Screen options={{ headerShown: false, }} name="CustomerStack" component={CustomerStack} />
 
             <Tab.Screen options={{
                 headerShown: false,

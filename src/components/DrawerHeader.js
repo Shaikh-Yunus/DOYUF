@@ -5,38 +5,26 @@ import {
   TextInput,
   View,
   Pressable,
-  Button,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import GlobalStyles from '../shared/GlobalStyles';
 import Images from '../assets/images/Images';
 import Constant from '../shared/Constant';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
-import Modal from 'react-native-modal';
 
-const BackHeader = ({disable, onSearch}) => {
+const DrawerHeader = () => {
   const navigation = useNavigation();
+
   const toggleDrawer = () => {
-    navigation.navigate('DrawerScreen');
-  };
-  const handleSearch = text => {
-    if (text.trim() === '') {
-      onSearch(false);
-    } else {
-      onSearch(true);
-    }
+    navigation.goBack();
   };
 
   return (
     <View>
       <View style={styles.HeaderContainer}>
         <Pressable onPress={toggleDrawer} style={{flex: 1}}>
-          <FontAwesome5 name="bars" size={25} color="black" />
+          <AntDesign name="close" size={25} color="black" />
         </Pressable>
 
         <View style={{flex: 2}}>
@@ -47,35 +35,23 @@ const BackHeader = ({disable, onSearch}) => {
           />
         </View>
         <View style={{flexDirection: 'row'}}>
-          <Feather style={styles.icon} name="user" size={25} color="black" />
-          <Feather style={styles.icon} name="heart" size={25} color="black" />
-          <Ionicons
+          <Image
+            source={Images.profileIcon}
             style={styles.icon}
-            name="cart-outline"
-            size={25}
-            color="black"
+            resizeMode="contain"
+          />
+          <Image
+            source={Images.heartIcon}
+            style={styles.icon}
+            resizeMode="contain"
+          />
+          <Image
+            source={Images.cartIcon}
+            style={styles.icon}
+            resizeMode="contain"
           />
         </View>
       </View>
-
-      {disable == true ? (
-        <View
-          style={{
-            paddingHorizontal: 25,
-            paddingVertical: 10,
-            borderWidth: 0.5,
-            borderColor: 'lightgrey',
-          }}>
-          <View style={styles.searchBar}>
-            <AntDesign name="search1" size={20} color="black" />
-            <TextInput
-              onChangeText={handleSearch}
-              style={styles.text}
-              placeholder="SEARCH PRODUCT..."
-            />
-          </View>
-        </View>
-      ) : null}
     </View>
   );
 };
@@ -97,7 +73,10 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   icon: {
-    marginHorizontal: 4,
+    height: 20,
+    width: 20,
+    resizeMode: 'contain',
+    marginHorizontal: 7,
   },
   searchBar: {
     flexDirection: 'row',
@@ -106,16 +85,15 @@ const styles = StyleSheet.create({
     // height: 60,
     backgroundColor: '#fff', // Replace with your desired background color
     borderWidth: 0.5,
-    borderWidthColor: 'grey',
     borderRadius: 5,
   },
   text: {
     flex: 1,
-    marginLeft: 10,
+    marginLeft: 30,
     fontSize: 14,
     color: 'black',
     fontFamily: Constant.fontFamily,
   },
 });
 
-export default BackHeader;
+export default DrawerHeader;
