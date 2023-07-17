@@ -6,8 +6,10 @@ import GlobalStyles from '../../shared/GlobalStyles'
 import Input from '../../components/Input';
 import { RadioButton } from 'react-native-paper';
 import Images from '../../assets/images/Images';
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
-const RegisterScreen = () => {
+
+const RegisterScreen = ({ closeregistrationmodel }) => {
     const [selectedGender, setSelectedGender] = useState('');
 
     const handleGenderChange = (gender) => {
@@ -15,17 +17,30 @@ const RegisterScreen = () => {
     };
     return (
         <View style={GlobalStyles.container}>
-            <View style={GlobalStyles.wrapper}>
-                <Text style={styles.title}>Lets get personal</Text>
-                <Text style={styles.subTitle}>Register for unique shopping experience</Text>
+            <View style={{ padding: 0 }}>
 
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={styles.title}>REGISTOR</Text>
+                    <View style={{ backgroundColor: '#C39A59', height: 35, width: 35, borderRadius: 20, justifyContent: 'center' }}>
+                        <FontAwesome onPress={closeregistrationmodel} name='close' color='#fff' size={20} style={{ alignSelf: 'center' }} />
+
+                    </View>
+                </View>
                 <View style={GlobalStyles.inputContainer}>
                     <Image source={Images.uaeFlag} style={styles.flagIcon} />
                     <Text style={styles.phoneCode}>+971</Text>
-                    <TextInput style={GlobalStyles.textInput} maxLength={10} placeholder="PHONE NUMBER*" />
+                    <TextInput style={GlobalStyles.textInput} maxLength={10} placeholder="PHONE NUMBER" placeholderTextColor={'#716F6F'} />
                 </View>
 
-                <Input placeholder='NAME*' />
+                <View style={GlobalStyles.inputContainer}>
+                    <TextInput style={GlobalStyles.textInput} placeholder="EMAIL" placeholderTextColor={'#716F6F'} />
+                </View>
+                <View style={GlobalStyles.inputContainer}>
+                    <TextInput style={GlobalStyles.textInput} placeholder="NAME" placeholderTextColor={'#716F6F'} />
+                </View>
+                <View style={GlobalStyles.inputContainer}>
+                    <TextInput style={GlobalStyles.textInput} placeholder="USERNAME" placeholderTextColor={'#716F6F'} />
+                </View>
                 <View style={{ flexDirection: 'row', marginTop: 10 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 16 }}>
                         <RadioButton
@@ -45,6 +60,7 @@ const RegisterScreen = () => {
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <RadioButton
+
                             value="not-specified"
                             status={selectedGender === 'not-specified' ? 'checked' : 'unchecked'}
                             onPress={() => handleGenderChange('not-specified')}
@@ -53,10 +69,8 @@ const RegisterScreen = () => {
                     </View>
                 </View>
 
-                <Input placeholder='EMAIL*' />
-                <Input placeholder='PASSWORD*' security={true} />
-
-                <Text style={styles.forgotPassword}>Forgot password?</Text>
+                <Text style={styles.containPassword}>Password must contain at least 8 {'\n'}
+                    charecters</Text>
                 <View style={{ marginTop: 20 }}>
                     <Button text='CREATE ACCOUNT' />
                 </View>
@@ -92,11 +106,14 @@ const styles = StyleSheet.create({
         color: '#000',
     },
     RadioButtonText: {
-        fontSize: 13
+        fontSize: 13,
+        color: '#716F6F'
     },
-    forgotPassword: {
+    containPassword: {
+        fontFamily: Constant.fontFamily,
+        color: '#716F6F',
         fontSize: 14,
-        color: '#000',
-        marginTop: 20,
+        fontWeight: '500',
+        marginTop: 20
     },
 })

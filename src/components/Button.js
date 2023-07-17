@@ -6,7 +6,7 @@ const Button = ({ text }) => {
     return (
         <View style={{
             height: 50, backgroundColor: Constant.colors.primaryColor,
-            justifyContent: 'center', alignItems: 'center'
+            justifyContent: 'center', alignItems: 'center',borderRadius:5
         }}>
             <Text style={{
                 color: Constant.colors.whiteColor,

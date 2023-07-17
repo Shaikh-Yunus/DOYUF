@@ -71,6 +71,8 @@ const Images = {
     Brand4: require('./Brand4.png'),
     Brand5: require('./Brand5.png'),
     Brand6: require('./Brand6.png'),
+    goolelogo: require('./google-logo.png'),
+    facebooklogo: require('./facebook-logo.png'),
 
 }
 export default Images
