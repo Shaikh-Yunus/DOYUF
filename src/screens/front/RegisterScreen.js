@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, Touchable, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import Button from '../../components/Button';
 import Constant from '../../shared/Constant';
@@ -9,7 +9,7 @@ import Images from '../../assets/images/Images';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 
-const RegisterScreen = ({ closeregistrationmodel }) => {
+const RegisterScreen = ({ closeregistrationmodel ,openloginmodel }) => {
     const [selectedGender, setSelectedGender] = useState('');
 
     const handleGenderChange = (gender) => {
@@ -41,8 +41,8 @@ const RegisterScreen = ({ closeregistrationmodel }) => {
                 <View style={GlobalStyles.inputContainer}>
                     <TextInput style={GlobalStyles.textInput} placeholder="USERNAME" placeholderTextColor={'#716F6F'} />
                 </View>
-                <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 16 }}>
+                <View style={{ flexDirection: 'row', marginTop: 10 , justifyContent:'space-evenly' }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center',marginRight: 16  }}>
                         <RadioButton
                             value="male"
                             status={selectedGender === 'male' ? 'checked' : 'unchecked'}
@@ -76,7 +76,9 @@ const RegisterScreen = ({ closeregistrationmodel }) => {
                 </View>
                 <View style={[GlobalStyles.alignMiddle, { flexDirection: 'row', marginTop: 20 }]}>
                     <Text style={{ color: Constant.colors.textColor }}>Already have an account?</Text>
+                    <TouchableOpacity onPress={()=>{openloginmodel(),closeregistrationmodel()}}>
                     <Text style={{ color: Constant.colors.textColor, fontWeight: 'bold' }}>Login</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View >

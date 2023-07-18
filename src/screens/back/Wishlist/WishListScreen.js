@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, FlatList } from 'react-native'
+import { StyleSheet, Text, View, Image, FlatList, Touchable, TouchableOpacity } from 'react-native'
 import React from 'react'
 import GlobalStyles from '../../../shared/GlobalStyles'
 import FrontHead from '../../../components/FrontHead'
@@ -7,8 +7,11 @@ import Constant from '../../../shared/Constant'
 import Button from '../../../components/Button'
 import BottomTab from '../../../components/BottomTab'
 import ScreenHeading from '../../../components/ScreenHeading'
+import {useNavigation} from '@react-navigation/native';
+
 
 const WishListScreen = () => {
+    const navigation = useNavigation();
     const wishlistData = [
         {
             id: 1,
@@ -54,6 +57,7 @@ const WishListScreen = () => {
     return (
         <View style={GlobalStyles.container}>
             <FrontHead />
+            
             <View style={{ paddingHorizontal: 20, marginTop: 10 }}>
                 <ScreenHeading text="Home / My Wishlist" />
             </View>

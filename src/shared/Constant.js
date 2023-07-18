@@ -13,6 +13,7 @@ const Constant = {
         whiteColor: '#FFFFFF',
     },
     fontFamily: 'Avenir Next LT Pro',
+    AvenirBold: 'AvenirNextLTPro-Bold',
     // fontFamily: 'AvenirNextLTPro-BoldCn',
     // fontFamily: 'Octicons',
     borderRadius: 10,

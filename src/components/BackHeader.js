@@ -27,6 +27,7 @@ import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import LoginScreen from '../screens/front/LoginScreen';
 import RegisterScreen from '../screens/front/RegisterScreen';
+import ForgotPassword from '../screens/front/ForgotPassword';
 
 const BackHeader = ({ disable, onSearch, onPressSearch, defaultView }) => {
   const navigation = useNavigation();
@@ -88,6 +89,22 @@ const closeregistrationmodel=()=>{
 }
 // open Registration model 
 
+
+
+// open Forgot password model 
+
+const [forgotPasswordmodelvisible, setforgotPasswordvisible]=useState(false)
+
+const openforgotPasswordmodel=()=>{
+  setforgotPasswordvisible(true)
+  setModalVisible(false)
+}
+const closeforgotPasswordmodel=()=>{
+  setforgotPasswordvisible(false)
+
+}
+// open Forgot password model 
+
 const toggleDrawer = () => {
     navigation.navigate('DrawerScreen');
   };
@@ -97,7 +114,7 @@ const toggleDrawer = () => {
     } else {
       onSearch(true);
     }
-  };
+  }; 
 
   const products = [
     {
@@ -148,8 +165,12 @@ const toggleDrawer = () => {
             />
           </View>
           <View style={{ flexDirection: 'row' }}>
+            <TouchableOpacity>
             <Feather onPress={openModal} style={styles.icon} name="user" size={25} color="black" />
-            <Feather style={styles.icon} name="heart" size={25} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+            <Feather onPress={()=>navigation.navigate('/WishList-Screen')} style={styles.icon} name="heart" size={25} color="black" />
+            </TouchableOpacity>
             <Ionicons
               onPress={opencartModal}
               style={styles.icon}
@@ -175,9 +196,10 @@ const toggleDrawer = () => {
                 onChangeText={handleSearch}
                 style={styles.text}
                 placeholder="SEARCH PRODUCT..."
+                placeholderTextColor={'#000'}
               />
               <Pressable onPress={defaultView}>
-                <FontAwesome5 name="cross" size={25} color="black" />
+                <FontAwesome name="close" size={20} color="black" />
               </Pressable>
             </View>
           </View>
@@ -208,53 +230,53 @@ const toggleDrawer = () => {
               <View style={{ height: 185, width: 248, marginTop: 35 }}>
 
                 <View style={{ backgroundColor: '#D9D9D9', height: 1, width: 248, }}></View>
-                <View style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
+                <TouchableOpacity  onPress={()=> navigation.navigate('/Account-Screen')} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
                   <View style={{ flexDirection: 'row' }}>
                     <Feather name="user" size={20} color="#000" />
                     <Text style={{ color: '#000000', marginLeft: 15 }}>My Account</Text>
                   </View>
                   <AntDesign name='right' size={15} color='#000' style={styles.modeliconarrow} />
-                </View>
+                </TouchableOpacity>
 
                 <View style={{ backgroundColor: '#D9D9D9', height: 1, width: 248, }}></View>
-                <View style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
+                <TouchableOpacity onPress={()=>navigation.navigate('/Account-Screen',{})} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
                   <View style={{ flexDirection: 'row' }}>
                     <Feather style={styles.modelicon} name="menu" size={20} color="#000" />
                     <Text style={{ color: '#000000', marginLeft: 15 }}>My Orders</Text>
                   </View>
                   <AntDesign name='right' size={15} color='#000' style={styles.modeliconarrow} />
 
-                </View>
+                </TouchableOpacity>
 
                 <View style={{ backgroundColor: '#D9D9D9', height: 1, width: 248, }}></View>
-                <View style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
+                <TouchableOpacity onPress={()=>navigation.navigate('/WishList-Screen')} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
                   <View style={{ flexDirection: 'row' }}>
                     <Feather style={styles.modelicon} name="heart" size={20} color="#000" />
                     <Text style={{ color: '#000000', marginLeft: 15 }}>My Wishlist</Text>
                   </View>
                   <AntDesign name='right' size={15} color='#000' style={styles.modeliconarrow} />
 
-                </View>
+                </TouchableOpacity>
 
                 <View style={{ backgroundColor: '#D9D9D9', height: 1, width: 248, }}></View>
-                <View style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
+                <TouchableOpacity  onPress={()=>navigation.navigate('/ReturnPolicy-Screen')} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
                   <View style={{ flexDirection: 'row' }}>
                     <MaterialCommunityIcons style={styles.modelicon} name="keyboard-return" size={20} color="#000" />
                     <Text style={{ color: '#000000', marginLeft: 15 }}>Return Policy</Text>
                   </View>
                   <AntDesign name='right' size={15} color='#000' style={styles.modeliconarrow} />
 
-                </View>
+                </TouchableOpacity>
 
                 <View style={{ backgroundColor: '#D9D9D9', height: 1, width: 248, }}></View>
-                <View style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
+                <TouchableOpacity onPress={()=>navigation.navigate('Home')} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
                   <View style={{ flexDirection: 'row' }}>
                     <MaterialIcons style={styles.modelicon} name="logout" size={20} color="#000" />
                     <Text style={{ color: '#000000', marginLeft: 15 }}>Logout</Text>
                   </View>
                   <AntDesign name='right' size={15} color='#000' style={styles.modeliconarrow} />
 
-                </View>
+                </TouchableOpacity>
 
               </View>
             </View>
@@ -330,7 +352,7 @@ const toggleDrawer = () => {
               width: '100%',
               height: '70%',
             }}>
-              <LoginScreen closeloginmodel={closeloginmodel} />
+              <LoginScreen closeloginmodel={closeloginmodel} openregistrationmodel={openregistrationmodel} openforgotPasswordmodel={openforgotPasswordmodel} />
             </View>
           </View>
         </Modal>
@@ -358,11 +380,41 @@ const toggleDrawer = () => {
               width: '100%',
               height: '90%',
             }}>
-              <RegisterScreen closeregistrationmodel={closeregistrationmodel} />
+              <RegisterScreen closeregistrationmodel={closeregistrationmodel} openloginmodel={openloginmodel} />
             </View>
           </View>
         </Modal>
         {/* Registration model */}
+
+
+
+
+        {/* Forgot Password modal */}
+        <Modal visible={forgotPasswordmodelvisible} animationType="slide" transparent>
+          <View style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingTop: 0,
+            paddingRight: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            height: '100%',
+            width: '100%',
+          }}>
+            <View style={{
+              backgroundColor: 'white',
+              borderRadius: 10,
+              padding: 20,
+              width: '100%',
+              height: '40%',
+            }}>
+              <ForgotPassword closeforgotPasswordmodel={closeforgotPasswordmodel} openloginmodel={openloginmodel}  />
+            </View>
+          </View>
+        </Modal>
+
+
+        {/* Forgot Password modal */}
 
       </Pressable>
     </View>

@@ -1,10 +1,17 @@
-import {StyleSheet, Text, View,ScrollView} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useState} from 'react';
 import GlobalStyles from '../../../shared/GlobalStyles';
 import BackHeader from '../../../components/BackHeader';
 import Constant from '../../../shared/Constant';
 import {Dropdown} from 'react-native-element-dropdown';
 import DrawerHeader from '../../../components/DrawerHeader';
+import {useNavigation} from '@react-navigation/native';
 
 const CustomButton = ({text}) => {
   return (
@@ -22,9 +29,13 @@ const CustomButtonTwo = () => {
     </View>
   );
 };
-const DrawerNavButtons = ({text}) => {
+const DrawerNavButtons = ({text, destination}) => {
+  const navigation = useNavigation();
+  const handlePress = () => {
+    navigation.navigate(destination);
+  };
   return (
-    <View style={styles.navButtons}>
+    <TouchableOpacity style={styles.navButtons} onPress={handlePress}>
       <Text style={styles.navButtonText}>{text}</Text>
       <View
         style={{
@@ -32,7 +43,7 @@ const DrawerNavButtons = ({text}) => {
           borderBottomWidth: 0.5,
           borderBottomColor: 'lightgrey',
         }}></View>
-    </View>
+    </TouchableOpacity>
   );
 };
 const DrawerScreen = () => {
@@ -46,6 +57,11 @@ const DrawerScreen = () => {
     {label: 'Item 7', value: '7'},
     {label: 'Item 8', value: '8'},
   ];
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    navigation.navigate(destination);
+  };
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const dataTwo = [
@@ -95,11 +111,28 @@ const DrawerScreen = () => {
         </View>
 
         <View>
-          <DrawerNavButtons text="ABOUT" />
+          <DrawerNavButtons
+            onPress={handlePress}
+            destination="AboutScreen"
+            text="ABOUT"
+          />
           <DrawerNavButtons text="ACCOUNT" />
           <DrawerNavButtons text="ORDERS" />
-          <DrawerNavButtons text="KIDS" />
-          <DrawerNavButtons text="OFFERS" />
+          <DrawerNavButtons
+            onPress={handlePress}
+            destination="ContactScreen"
+            text="CONTACT"
+          />
+          <DrawerNavButtons
+            text="KIDS"
+            onPress={handlePress}
+            destination="RenderProducts"
+          />
+          <DrawerNavButtons
+            onPress={handlePress}
+            destination="RenderProducts"
+            text="OFFERS"
+          />
           <DrawerNavButtons text="العربية" />
           <DrawerNavButtons text="TRACK YOUR ORDERS" />
         </View>

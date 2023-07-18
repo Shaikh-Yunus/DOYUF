@@ -1,74 +1,157 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import React from 'react'
-import GlobalStyles from '../../../shared/GlobalStyles'
-import BackHeader from '../../../components/BackHeader'
-import BottomTab from '../../../components/BottomTab'
-import AntDesign from 'react-native-vector-icons/AntDesign'
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import SubHeading from '../../../components/SubHeading'
-import Constant from '../../../shared/Constant'
-import Input from '../../../components/Input'
-import Button from '../../../components/Button'
-import ScreenHeading from '../../../components/ScreenHeading'
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  FlatList,
+  Pressable,
+} from 'react-native';
+import GlobalStyles from '../../../shared/GlobalStyles';
+import BackHeader from '../../../components/BackHeader';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Input from '../../../components/Input';
+import Button from '../../../components/Button';
+import ScreenHeading from '../../../components/ScreenHeading';
+
+const OrderItem = ({order}) => {
+  return (
+    <View style={styles.card}>
+      <View style={styles.orderHeader}>
+        <Text style={styles.orderNumber}>Order #{order.orderNumber}</Text>
+        <AntDesign name="right" size={24} color="black" />
+      </View>
+      <Text style={styles.orderAmount}>AED {order.amount}</Text>
+      <Text style={styles.orderPlaced}>Order Placed: {order.placedDate}</Text>
+    </View>
+  );
+};
+
 const AccountScreen = () => {
-    return (
-        <View style={GlobalStyles.container}>
-            <BackHeader />
+  const [showProfile, setShowProfile] = useState(true);
+  const [showOrders, setShowOrders] = useState(false);
 
-            <ScrollView style={GlobalStyles.wrapper}>
-                <ScreenHeading text="Home / My Account" />
-                <View style={{ marginBottom: 30, flexDirection: 'row', alignItems: 'center' }}>
-                    <AntDesign name="user" size={25} color="black" />
-                    <View style={{ flex: 1 }}>
-                        <Text style={{ marginLeft: 10, fontFamily: Constant.fontFamily }}>My Profile</Text>
-                    </View>
-                    <AntDesign name="right" size={25} color="black" />
-                </View>
-                <View style={{ marginBottom: 30, flexDirection: 'row', alignItems: 'center' }}>
-                    <FontAwesome name="bars" size={25} color="black" />
-                    <View style={{ flex: 1 }}>
-                        <Text style={{ marginLeft: 10, fontFamily: Constant.fontFamily }}>My Orders</Text>
-                    </View>
-                    <AntDesign name="right" size={25} color="black" />
-                </View>
-                <View style={{ marginBottom: 30, flexDirection: 'row', alignItems: 'center' }}>
-                    <SimpleLineIcons name="logout" size={23} color="black" />
-                    <View style={{ flex: 1 }}>
-                        <Text style={{ marginLeft: 10, fontFamily: Constant.fontFamily }}>Logout</Text>
-                    </View>
-                    <AntDesign name="right" size={25} color="black" />
-                </View>
+  const orderData = [
+    {orderNumber: '108', amount: '369.10', placedDate: 'July 02, 2023'},
+    {orderNumber: '109', amount: '369.10', placedDate: 'July 02, 2023'},
+    {orderNumber: '110', amount: '369.10', placedDate: 'July 02, 2023'},
+    {orderNumber: '111', amount: '369.10', placedDate: 'July 02, 2023'},
+    // Add more order items as needed
+  ];
 
+  return (
+    <View style={GlobalStyles.container}>
+      <BackHeader />
 
+      <ScrollView style={GlobalStyles.wrapper}>
+        <ScreenHeading text="Home / My Account" />
 
-                <View style={{ marginVertical: 20 }}>
-                    <Text style={{
-                        color: Constant.colors.textColor,
-                        fontSize: 20,
-                        fontWeight: 'bold',
-                        fontFamily: Constant.fontFamily
-                    }}>My Profile</Text>
+        <Pressable
+          onPress={() => {
+            setShowProfile(true);
+            setShowOrders(false);
+          }}
+          style={styles.section}>
+          <AntDesign name="user" size={25} color="black" />
+          <Text style={styles.sectionText}>My Profile</Text>
+          <AntDesign name="right" size={25} color="black" />
+        </Pressable>
 
-                    <Input placeholder="Name" />
-                    <Input placeholder="Email Id" />
-                    <Input placeholder="Phone" />
-                    <Input placeholder="Password" />
+        <Pressable
+          onPress={() => {
+            setShowProfile(false);
+            setShowOrders(true);
+          }}
+          style={styles.section}>
+          <FontAwesome name="bars" size={25} color="black" />
+          <Text style={styles.sectionText}>My Orders</Text>
+          <AntDesign name="right" size={25} color="black" />
+        </Pressable>
 
-                    <View style={{ marginTop: 20, width: '50%' }}>
-                        <Button text="UPDATE DETAILS" />
-                    </View>
-                </View>
-            </ScrollView >
+        <View style={styles.section}>
+          <SimpleLineIcons name="logout" size={23} color="black" />
+          <Text style={styles.sectionText}>Logout</Text>
+          <AntDesign name="right" size={25} color="black" />
+        </View>
 
+        {showProfile && (
+          <View style={styles.profileSection}>
+            <Text style={styles.sectionHeading}>User Profile Section</Text>
+            {/* Render the user's profile */}
+            <Input placeholder="Name" />
+            <Input placeholder="Email Id" />
+            <Input placeholder="Phone" />
+            <Input placeholder="Password" />
 
-            {/* <View style={{ flex: 0 }}>
-                <BottomTab />
-            </View> */}
-        </View >
-    )
-}
+            <View style={{marginTop: 20, width: '50%'}}>
+              <Button text="UPDATE DETAILS" />
+            </View>
+          </View>
+        )}
 
-export default AccountScreen
+        {showOrders && (
+          <FlatList
+            data={orderData}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => <OrderItem order={item} />}
+          />
+        )}
+      </ScrollView>
+    </View>
+  );
+};
 
-const styles = StyleSheet.create({})
+export default AccountScreen;
+
+const styles = StyleSheet.create({
+  card: {
+    borderWidth: 1,
+    borderColor: 'grey',
+    padding: 10,
+    marginBottom: 10,
+  },
+  orderHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  orderNumber: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  orderAmount: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  orderPlaced: {
+    fontSize: 14,
+    color: 'black',
+  },
+  section: {
+    marginBottom: 30,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+  },
+  sectionText: {
+    marginLeft: 10,
+    fontFamily: 'YourFontFamily',
+    flex: 1,
+    color:'#000'
+  },
+  profileSection: {
+    marginVertical: 20,
+  },
+  sectionHeading: {
+    color: 'black',
+    fontSize: 20,
+    fontWeight: 'bold',
+    fontFamily: 'YourFontFamily',
+    marginBottom: 10,
+  },
+});

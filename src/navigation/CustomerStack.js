@@ -8,6 +8,9 @@ import CartScreen from '../screens/back/Cart/CartScreen';
 import AccountScreen from '../screens/back/Account/AccountScreen';
 import DrawerScreen from '../screens/back/Home/DrawerScreen';
 import RenderProducts from '../screens/back/Home/RenderProducts';
+import FilterScreen from '../screens/back/Home/FilterScreen';
+import AboutScreen from '../screens/back/Home/AboutScreen';
+import ReturnPolicyScreen from '../screens/back/ReturnPolicy/ReturnPolicyScreen';
 const Stack = createNativeStackNavigator();
 const screenOptions = {
   headerShown: false,
@@ -27,10 +30,15 @@ const CustomerStack = () => {
           </TouchableOpacity>
         ),
       }}>
-
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="DrawerScreen" component={DrawerScreen} />
+      <Stack.Screen name="AboutScreen" component={AboutScreen} />
       <Stack.Screen name="RenderProducts" component={RenderProducts} />
+      <Stack.Screen name="FilterScreen" component={FilterScreen} />
+      <Stack.Screen name="/Account-Screen" component={AccountScreen} />
+      <Stack.Screen name="/WishList-Screen" component={WishListScreen} />
+      <Stack.Screen name="/ReturnPolicy-Screen" component={ReturnPolicyScreen} />
+
     </Stack.Navigator>
   );
 };

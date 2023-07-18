@@ -29,6 +29,7 @@ const AuthStack = () => {
       <Stack.Screen name="CountryScreen" component={CountryScreen} />
       <Stack.Screen name="CategoryScreen" component={CategoryScreen} />
       <Stack.Screen name="BottomTabStack" component={BottomTabStack} />
+
     </Stack.Navigator>
   );
 };
