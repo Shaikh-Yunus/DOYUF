@@ -11,6 +11,7 @@ import RenderProducts from '../screens/back/Home/RenderProducts';
 import FilterScreen from '../screens/back/Home/FilterScreen';
 import AboutScreen from '../screens/back/Home/AboutScreen';
 import ReturnPolicyScreen from '../screens/back/ReturnPolicy/ReturnPolicyScreen';
+import CheckoutScreen from '../screens/back/Cart/CheckoutScreen';
 const Stack = createNativeStackNavigator();
 const screenOptions = {
   headerShown: false,
@@ -38,6 +39,8 @@ const CustomerStack = () => {
       <Stack.Screen name="/Account-Screen" component={AccountScreen} />
       <Stack.Screen name="/WishList-Screen" component={WishListScreen} />
       <Stack.Screen name="/ReturnPolicy-Screen" component={ReturnPolicyScreen} />
+      <Stack.Screen name="/Cart-Screen" component={CartScreen}/>
+      <Stack.Screen name="/Checkout-Screen" component={CheckoutScreen}/>
 
     </Stack.Navigator>
   );

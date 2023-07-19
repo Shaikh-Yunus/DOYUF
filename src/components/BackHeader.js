@@ -316,10 +316,10 @@ const toggleDrawer = () => {
 
               </View>
               <View style={styles.buttoncartContainer}>
-                <TouchableOpacity style={styles.buttonviewbag}>
+                <TouchableOpacity onPress={()=>{navigation.navigate('/Cart-Screen'), closecartModal}} style={styles.buttonviewbag}>
                   <Text style={{ color: '#000', fontWeight: 'bold', textAlign: 'center', fontFamily: Constant.fontFamily }}>VIEW BAG</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttoncheckout}>
+                <TouchableOpacity  onPress={()=> {navigation.navigate('/Checkout-Screen') , closecartModal()}}style={styles.buttoncheckout}>
                   <Text style={{ color: '#FFFFFF', fontWeight: 'bold', textAlign: 'center', fontFamily: Constant.fontFamily, }}>CHECKOUT</Text>
                 </TouchableOpacity>
               </View>
