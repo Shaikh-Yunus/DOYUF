@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -16,8 +16,10 @@ import GlobalStyles from '../../../shared/GlobalStyles';
 import Constant from '../../../shared/Constant';
 import StarRating from 'react-native-star-rating-widget';
 import ProductsHorizontalScreen from './ProductsHorizontalScreen';
+import { useNavigation } from '@react-navigation/native';
 
 const ProductDetailsScreen = () => {
+  const navigation = useNavigation()
   const [currentImageIndex, setCurrentImageIndex] = useState(0); // Current image index state
   const images = [Images.bag1, Images.Bag3, Images.Bag4]; // Array of three images
   const [selectedButton, setSelectedButton] = useState(null); // Selected button state
@@ -53,11 +55,11 @@ const ProductDetailsScreen = () => {
   };
   const averageRating = 3.5;
   const ratings = [
-    {stars: 5, percentage: 0},
-    {stars: 4, percentage: 0},
-    {stars: 3, percentage: 0},
-    {stars: 2, percentage: 0},
-    {stars: 1, percentage: 0},
+    { stars: 5, percentage: 0 },
+    { stars: 4, percentage: 0 },
+    { stars: 3, percentage: 0 },
+    { stars: 2, percentage: 0 },
+    { stars: 1, percentage: 0 },
   ];
   const handleRatingChange = newRating => {
     setRating(newRating);
@@ -79,28 +81,28 @@ const ProductDetailsScreen = () => {
 
   const scrollToTop = () => {
     if (scrollViewRef.current) {
-      scrollViewRef.current.scrollTo({y: 0, animated: true});
+      scrollViewRef.current.scrollTo({ y: 0, animated: true });
     }
   };
   return (
     <View style={GlobalStyles.container}>
       <View style={GlobalStyles.wrapper}>
-        <ScrollView ref={scrollViewRef} style={{height: '95%'}}>
+        <ScrollView ref={scrollViewRef} style={{ height: '95%' }}>
           <View style={styles.iconsContainer}>
             <View style={styles.topLeftIcon}>
-              <Pressable style={styles.iconBackground}>
+              <Pressable onPress={() => navigation.goBack()} style={styles.iconBackground}>
                 <AntDesign name="left" size={15} color="black" />
               </Pressable>
-              <Pressable style={styles.iconBackground}>
+              <Pressable onPress={() => navigation.navigate('Home')} style={styles.iconBackground}>
                 <AntDesign name="home" size={15} color="black" />
               </Pressable>
             </View>
 
             <View style={styles.topRightIcon}>
-              <Pressable style={styles.iconBackground}>
+              <Pressable onPress={() => navigation.navigate('CartScreen')} style={styles.iconBackground}>
                 <AntDesign name="shoppingcart" size={15} color="black" />
               </Pressable>
-              <Pressable style={styles.iconBackground}>
+              <Pressable onPress={() => navigation.navigate('WishListScreen')} style={styles.iconBackground}>
                 <AntDesign name="hearto" size={15} color="black" />
               </Pressable>
             </View>
@@ -158,17 +160,18 @@ const ProductDetailsScreen = () => {
           <TextInput
             style={styles.zipcodeInput}
             placeholder="Delivery Zipcode"
+            placeholderTextColor={'grey'}
           />
-          <View style={{borderWidth: 0.3, borderColor: 'lightgrey'}}></View>
-          <Text style={{marginTop: 10}}>
+          <View style={{ borderWidth: 0.3, borderColor: 'lightgrey' }}></View>
+          <Text style={{ marginTop: 10, color: 'grey' }}>
             For orders other than UAE - Custom duty may be charged at the time
             of delivery
           </Text>
-          <View style={{marginTop: 10}}>
-            <Text style={{color: 'black', fontWeight: 'bold', fontSize: 16}}>
+          <View style={{ marginTop: 10 }}>
+            <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 16 }}>
               Also Available In:
             </Text>
-            <View style={{marginTop: 10}}>
+            <View style={{ marginTop: 10 }}>
               <Image
                 source={Images.Bag1}
                 style={{
@@ -209,11 +212,11 @@ const ProductDetailsScreen = () => {
             />
           </Pressable>
           {isExpandedReview && (
-            <View style={{flex: 1, marginTop: 30}}>
-              <Text style={{fontSize: 20, fontWeight: 'bold', color: 'black'}}>
+            <View style={{ flex: 1, marginTop: 30 }}>
+              <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black' }}>
                 Average Rating: {averageRating.toFixed(1)}
               </Text>
-              <View style={{marginTop: 30}}>
+              <View style={{ marginTop: 30 }}>
                 <StarRating
                   maxStars={5}
                   rating={averageRating}
@@ -240,7 +243,7 @@ const ProductDetailsScreen = () => {
                     marginTop: 30,
                   }}>
                   <Text
-                    style={{fontSize: 16, fontWeight: 'bold', color: 'black'}}>
+                    style={{ fontSize: 16, fontWeight: 'bold', color: 'black' }}>
                     {rating.stars} Star:
                   </Text>
                   <View
@@ -248,7 +251,7 @@ const ProductDetailsScreen = () => {
                       flex: 1,
                       marginLeft: 10,
                     }}>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                       <View
                         style={{
                           flex: rating.percentage,
@@ -367,7 +370,7 @@ const ProductDetailsScreen = () => {
                 }}
                 onPress={handleSubmit}>
                 <Text
-                  style={{fontSize: 16, fontWeight: 'bold', color: 'white'}}>
+                  style={{ fontSize: 16, fontWeight: 'bold', color: 'white' }}>
                   Submit Now
                 </Text>
               </TouchableOpacity>
@@ -390,7 +393,7 @@ const ProductDetailsScreen = () => {
                 Return any unsatisfactory items within 14 days from receiving
                 your order.
               </Text>
-              <Text style={{fontWeight: 'bold', color: 'black'}}>
+              <Text style={{ fontWeight: 'bold', color: 'black' }}>
                 *Free delivery for orders above AED 200
               </Text>
             </Pressable>
@@ -398,14 +401,15 @@ const ProductDetailsScreen = () => {
           <Text
             style={{
               color: 'black',
-              fontWeight: 'bold',
-              fontSize: 20,
+              // fontWeight: 'bold',
+              fontFamily: Constant.AvenirBold,
+              fontSize: 25,
               marginTop: 30,
             }}>
             Check This Out
           </Text>
           <ProductsHorizontalScreen />
-          <Text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>
+          <Text style={{ color: 'black', fontFamily: Constant.AvenirBold, fontSize: 25 }}>
             Related Products
           </Text>
           <ProductsHorizontalScreen />
@@ -424,7 +428,7 @@ const ProductDetailsScreen = () => {
               borderRadius: 100,
             }}
             onPress={scrollToTop}>
-            <AntDesign name="up" color="brown" />
+            <AntDesign name="arrowup" size={20} color="brown" />
           </TouchableOpacity>
           <View style={styles.buttonContainer}>
             <Text style={styles.outOfStockText}>OUT OF STOCK</Text>
@@ -494,7 +498,7 @@ const styles = StyleSheet.create({
   brandText: {
     color: 'black',
     fontSize: 28,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     fontFamily: Constant.AvenirBold,
   },
   nameContainer: {
@@ -506,27 +510,31 @@ const styles = StyleSheet.create({
     // fontWeight: 'bold',
   },
   pricesContainer: {
+    // flex:1,
     flexDirection: 'row',
     marginBottom: 10,
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   offerPrice: {
-    color: 'red',
-    fontSize: 18,
+    color: '#cb0000',
+    fontSize: 16,
     fontWeight: 'bold',
   },
   mrpPrice: {
+    // flex: 2,
     color: 'black',
-    fontSize: 12,
-    // marginLeft: 10,
+    fontSize: 14,
+    marginLeft: 10,
     marginRight: 100,
     fontWeight: 'bold',
     textDecorationLine: 'line-through',
   },
   discount: {
-    color: 'darkred',
+    flex: 3,
+    color: '#cb0000',
     fontSize: 12,
+    // marginRight:5,
   },
   deliveryContainer: {
     flexDirection: 'row',
@@ -553,15 +561,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 20,
     flex: 1,
-    borderBottomColor: 'grey',
+    borderBottomColor: 'lightgrey',
     borderBottomWidth: 0.5,
     paddingBottom: 12,
+  },
+  detailText: {
+    color: 'grey'
   },
   reviewContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 20,
-    borderBottomColor: 'grey',
+    borderBottomColor: 'lightgrey',
     borderBottomWidth: 0.5,
     paddingBottom: 12,
   },
@@ -569,13 +580,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 20,
-    borderBottomColor: 'grey',
+    borderBottomColor: 'lightgrey',
     borderBottomWidth: 0.5,
     paddingBottom: 12,
   },
   headingText: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 22,
+    // fontWeight: 'bold',
+    fontFamily: Constant.fontFamily,
     color: 'black',
   },
   bottomContainer: {
@@ -592,7 +604,7 @@ const styles = StyleSheet.create({
     backgroundColor: Constant.colors.primaryColor,
     padding: 12,
     alignItems: 'center',
-    borderRadiusL: 10,
+    borderRadius: 10,
   },
   outOfStockText: {
     fontSize: 16,

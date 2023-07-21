@@ -55,10 +55,6 @@ const BackHeader = ({ disable, onSearch, onPressSearch, defaultView }) => {
   const closecartModal = () => {
     setcartModalVisible(false);
   };
-
-  // cart model
-
-
   //  open login model 
   const [loginmodelvisible, setloginmodelvisible] = useState(false);
 
@@ -70,42 +66,27 @@ const BackHeader = ({ disable, onSearch, onPressSearch, defaultView }) => {
   const closeloginmodel = () => {
     setloginmodelvisible(false)
   }
+  // open Registration model 
+  const [registrationmodelvisible, setregistrationmmodelvisible] = useState(false)
+  const openregistrationmodel = () => {
+    setregistrationmmodelvisible(true)
+    setModalVisible(false)
+  }
+  const closeregistrationmodel = () => {
+    setregistrationmmodelvisible(false)
 
+  }
+  // open Forgot password model 
+  const [forgotPasswordmodelvisible, setforgotPasswordvisible] = useState(false)
+  const openforgotPasswordmodel = () => {
+    setforgotPasswordvisible(true)
+    setModalVisible(false)
+  }
+  const closeforgotPasswordmodel = () => {
+    setforgotPasswordvisible(false)
+  }
 
-
-  //  open login model 
-
-// open Registration model 
-
-const [registrationmodelvisible, setregistrationmmodelvisible]=useState(false)
-
-const openregistrationmodel=()=>{
-  setregistrationmmodelvisible(true)
-  setModalVisible(false)
-}
-const closeregistrationmodel=()=>{
-  setregistrationmmodelvisible(false)
-
-}
-// open Registration model 
-
-
-
-// open Forgot password model 
-
-const [forgotPasswordmodelvisible, setforgotPasswordvisible]=useState(false)
-
-const openforgotPasswordmodel=()=>{
-  setforgotPasswordvisible(true)
-  setModalVisible(false)
-}
-const closeforgotPasswordmodel=()=>{
-  setforgotPasswordvisible(false)
-
-}
-// open Forgot password model 
-
-const toggleDrawer = () => {
+  const toggleDrawer = () => {
     navigation.navigate('DrawerScreen');
   };
   const handleSearch = text => {
@@ -114,7 +95,7 @@ const toggleDrawer = () => {
     } else {
       onSearch(true);
     }
-  }; 
+  };
 
   const products = [
     {
@@ -166,10 +147,10 @@ const toggleDrawer = () => {
           </View>
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity>
-            <Feather onPress={openModal} style={styles.icon} name="user" size={25} color="black" />
+              <Feather onPress={openModal} style={styles.icon} name="user" size={25} color="black" />
             </TouchableOpacity>
             <TouchableOpacity>
-            <Feather onPress={()=>navigation.navigate('/WishList-Screen')} style={styles.icon} name="heart" size={25} color="black" />
+              <Feather onPress={() => navigation.navigate('/WishList-Screen')} style={styles.icon} name="heart" size={25} color="black" />
             </TouchableOpacity>
             <Ionicons
               onPress={opencartModal}
@@ -196,7 +177,7 @@ const toggleDrawer = () => {
                 onChangeText={handleSearch}
                 style={styles.text}
                 placeholder="SEARCH PRODUCT..."
-                placeholderTextColor={'#000'}
+                placeholderTextColor={'grey'}
               />
               <Pressable onPress={defaultView}>
                 <FontAwesome name="close" size={20} color="black" />
@@ -230,7 +211,7 @@ const toggleDrawer = () => {
               <View style={{ height: 185, width: 248, marginTop: 35 }}>
 
                 <View style={{ backgroundColor: '#D9D9D9', height: 1, width: 248, }}></View>
-                <TouchableOpacity  onPress={()=> navigation.navigate('/Account-Screen')} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
+                <TouchableOpacity onPress={() => navigation.navigate('/Account-Screen')} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
                   <View style={{ flexDirection: 'row' }}>
                     <Feather name="user" size={20} color="#000" />
                     <Text style={{ color: '#000000', marginLeft: 15 }}>My Account</Text>
@@ -239,7 +220,7 @@ const toggleDrawer = () => {
                 </TouchableOpacity>
 
                 <View style={{ backgroundColor: '#D9D9D9', height: 1, width: 248, }}></View>
-                <TouchableOpacity onPress={()=>navigation.navigate('/Account-Screen',{})} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
+                <TouchableOpacity onPress={() => navigation.navigate('/Account-Screen', {})} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
                   <View style={{ flexDirection: 'row' }}>
                     <Feather style={styles.modelicon} name="menu" size={20} color="#000" />
                     <Text style={{ color: '#000000', marginLeft: 15 }}>My Orders</Text>
@@ -249,7 +230,7 @@ const toggleDrawer = () => {
                 </TouchableOpacity>
 
                 <View style={{ backgroundColor: '#D9D9D9', height: 1, width: 248, }}></View>
-                <TouchableOpacity onPress={()=>navigation.navigate('/WishList-Screen')} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
+                <TouchableOpacity onPress={() => navigation.navigate('/WishList-Screen')} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
                   <View style={{ flexDirection: 'row' }}>
                     <Feather style={styles.modelicon} name="heart" size={20} color="#000" />
                     <Text style={{ color: '#000000', marginLeft: 15 }}>My Wishlist</Text>
@@ -259,7 +240,7 @@ const toggleDrawer = () => {
                 </TouchableOpacity>
 
                 <View style={{ backgroundColor: '#D9D9D9', height: 1, width: 248, }}></View>
-                <TouchableOpacity  onPress={()=>navigation.navigate('/ReturnPolicy-Screen')} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
+                <TouchableOpacity onPress={() => navigation.navigate('/ReturnPolicy-Screen')} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
                   <View style={{ flexDirection: 'row' }}>
                     <MaterialCommunityIcons style={styles.modelicon} name="keyboard-return" size={20} color="#000" />
                     <Text style={{ color: '#000000', marginLeft: 15 }}>Return Policy</Text>
@@ -269,7 +250,7 @@ const toggleDrawer = () => {
                 </TouchableOpacity>
 
                 <View style={{ backgroundColor: '#D9D9D9', height: 1, width: 248, }}></View>
-                <TouchableOpacity onPress={()=>navigation.navigate('Home')} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
+                <TouchableOpacity onPress={() => navigation.navigate('Home')} style={{ flexDirection: 'row', marginTop: 8, marginBottom: 8, justifyContent: 'space-between' }}>
                   <View style={{ flexDirection: 'row' }}>
                     <MaterialIcons style={styles.modelicon} name="logout" size={20} color="#000" />
                     <Text style={{ color: '#000000', marginLeft: 15 }}>Logout</Text>
@@ -316,10 +297,10 @@ const toggleDrawer = () => {
 
               </View>
               <View style={styles.buttoncartContainer}>
-                <TouchableOpacity onPress={()=>{navigation.navigate('/Cart-Screen'), closecartModal}} style={styles.buttonviewbag}>
+                <TouchableOpacity onPress={() => { navigation.navigate('/Cart-Screen'), closecartModal }} style={styles.buttonviewbag}>
                   <Text style={{ color: '#000', fontWeight: 'bold', textAlign: 'center', fontFamily: Constant.fontFamily }}>VIEW BAG</Text>
                 </TouchableOpacity>
-                <TouchableOpacity  onPress={()=> {navigation.navigate('/Checkout-Screen') , closecartModal()}}style={styles.buttoncheckout}>
+                <TouchableOpacity onPress={() => { navigation.navigate('/Checkout-Screen'), closecartModal() }} style={styles.buttoncheckout}>
                   <Text style={{ color: '#FFFFFF', fontWeight: 'bold', textAlign: 'center', fontFamily: Constant.fontFamily, }}>CHECKOUT</Text>
                 </TouchableOpacity>
               </View>
@@ -360,9 +341,9 @@ const toggleDrawer = () => {
 
 
 
- {/* Registration model */}
+        {/* Registration model */}
 
- <Modal visible={registrationmodelvisible} animationType="slide" transparent>
+        <Modal visible={registrationmodelvisible} animationType="slide" transparent>
           <View style={{
             flex: 1,
             justifyContent: 'flex-start',
@@ -408,7 +389,7 @@ const toggleDrawer = () => {
               width: '100%',
               height: '40%',
             }}>
-              <ForgotPassword closeforgotPasswordmodel={closeforgotPasswordmodel} openloginmodel={openloginmodel}  />
+              <ForgotPassword closeforgotPasswordmodel={closeforgotPasswordmodel} openloginmodel={openloginmodel} />
             </View>
           </View>
         </Modal>
@@ -447,7 +428,7 @@ const styles = StyleSheet.create({
     // height: 60,
     backgroundColor: '#fff', // Replace with your desired background color
     borderWidth: 0.5,
-    borderWidthColor: 'grey',
+    borderColor: 'grey',
     borderRadius: 5,
   },
   text: {

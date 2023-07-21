@@ -153,6 +153,7 @@ const FilterScreen = () => {
             <TextInput
               style={styles.searchInput}
               placeholder="Search..."
+              placeholderTextColor={'black'}
               value={searchText}
               onChangeText={handleSearch}
             />
@@ -197,11 +198,11 @@ const styles = StyleSheet.create({
     // backgroundColor: '#e9e9e9',
   },
   selectedTopicButton: {
-    backgroundColor: '#d2d2d2',
+    backgroundColor: '#dfdfdf',
     width: '100%',
   },
   topicText: {
-    fontSize: 11,
+    fontSize: 10,
     color: 'black',
     paddingLeft: 5,
   },
@@ -219,7 +220,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 5,
     marginBottom: 10,
-    backgroundColor: 'lightgrey',
+    backgroundColor: '#dfdfdf',
   },
   content: {
     flex: 3,

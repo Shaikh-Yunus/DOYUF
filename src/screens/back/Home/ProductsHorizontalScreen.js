@@ -1,12 +1,16 @@
-import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import { FlatList, Image, StyleSheet, Text, View, Pressable } from 'react-native';
 import React from 'react';
 import Constant from '../../../shared/Constant';
 import GlobalStyles from '../../../shared/GlobalStyles';
 import Images from '../../../assets/images/Images';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const ProductCardTwo = ({item}) => {
+const ProductCardTwo = ({ item }) => {
   return (
     <View style={styles.card}>
+      <Pressable style={styles.heartIconContainer}>
+        <AntDesign name="hearto" size={20} color="black" />
+      </Pressable>
       <Image
         source={item.image}
         style={styles.ProductImage}
@@ -14,10 +18,10 @@ const ProductCardTwo = ({item}) => {
       />
       <Text style={styles.name}>{item.name}</Text>
       <Text style={styles.madeIn}>{item.madeIn}</Text>
-      <Text style={styles.discountPrice}>{item.discountPrice}</Text>
       <View style={styles.priceContainer}>
+        <Text style={styles.discountPrice}>₹{item.discountPrice}</Text>
         <Text style={styles.price}>{`₹${item.price}`}</Text>
-        <Text style={styles.slashedPrice}>{`₹${item.percentage}`}</Text>
+        <Text style={styles.discoutpercentage}>{`${item.percentage}`}Off</Text>
       </View>
     </View>
   );
@@ -85,9 +89,10 @@ const RenderProductsSearch = () => {
       <FlatList
         data={dataSearch}
         numColumns={1}
-        renderItem={({item}) => <ProductCardTwo item={item} />}
+        renderItem={({ item }) => <ProductCardTwo item={item} />}
         keyExtractor={item => item.id.toString()}
         horizontal
+        showsHorizontalScrollIndicator={true}
       />
     </View>
   );
@@ -110,6 +115,15 @@ const styles = StyleSheet.create({
     margin: 5,
     // alignItems: 'center',
   },
+  heartIconContainer: {
+    backgroundColor: '#e9ecef',
+    borderRadius: 100,
+    padding: 5,
+    marginBottom: 3,
+    position: 'absolute',
+    zIndex: 1,
+    alignSelf: 'flex-end',
+  },
   heartIcon: {
     position: 'absolute',
     top: 10,
@@ -128,28 +142,31 @@ const styles = StyleSheet.create({
   name: {
     color: 'black',
     marginTop: 5,
-    fontWeight: 'bold',
-    fontFamily: Constant.fontFamily,
+    // fontWeight: 'bold',
+    fontFamily: Constant.AvenirBold,
   },
   priceContainer: {
     flexDirection: 'row',
     marginTop: 5,
   },
   discountPrice: {
-    color: 'black',
+    color: '#cb0000',
     fontWeight: 'bold',
-    fontFamily: Constant.fontFamily,
+
+    // fontFamily: Constant.AvenirBold,
   },
   price: {
-    color: 'red',
-    fontWeight: 'bold',
-    fontFamily: Constant.fontFamily,
+    color: 'black',
+    // fontWeight: 'bold',
+    textDecorationLine: 'line-through',
+    marginLeft: 5,
+    fontFamily: Constant.AvenirBold,
   },
-  slashedPrice: {
+  discoutpercentage: {
     color: 'red',
     marginLeft: 5,
-    textDecorationLine: 'line-through',
-    fontFamily: Constant.fontFamily,
+    fontSize:12,
+    fontFamily: Constant.AvenirBold,
   },
   productContainer: {
     flexDirection: 'row',

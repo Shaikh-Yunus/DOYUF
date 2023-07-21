@@ -293,7 +293,7 @@ const HomeScreen = () => {
                   <CategoryTwo />
                 </View>
                 <View>
-                  <SubHeading text="YOUR FAVOURITE LABELS" />
+                  <SubHeading text="YOUR FAVORITE LABELS" />
                 </View>
                 <View style={{marginTop: 20}}>
                   <Label />

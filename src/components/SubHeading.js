@@ -16,10 +16,12 @@ const SubHeading = ({text}) => {
       <Text
         style={{
           marginLeft: 10,
-          fontWeight: 'bold',
+          // alignSelf:'center',
+          marginTop:3,
+          // fontWeight: 'bold',
           color: Constant.colors.textColor,
           fontSize: 18,
-          fontFamily: 'AvenirNextLTPro-Bold',
+          fontFamily: 'AvenirNextLTPro',
         }}>
         {text}
       </Text>

@@ -1,14 +1,18 @@
-import { FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View, } from 'react-native'
+import { FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import GlobalStyles from '../../../shared/GlobalStyles'
 import FrontHead from '../../../components/FrontHead'
 import Constant from '../../../shared/Constant'
 import CartScreen from './CartScreen'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 import Images from '../../../assets/images/Images'
 import { Dropdown } from 'react-native-element-dropdown'
+import { useNavigation } from '@react-navigation/native'
 
 
 const CartFooter = () => {
+    const navigation = useNavigation()
     return (
         <View
             style={
@@ -24,20 +28,21 @@ const CartFooter = () => {
                 }}>
                 <View style={GlobalStyles.spaceBetweenRow}>
                     <Text style={styles.textCartFooter}>SubTotal</Text>
-                    <Text style={styles.textCartFooter}>SubTotal</Text>
+                    <Text style={styles.textCartFooter}>AED 15000.53</Text>
                 </View>
                 <View style={GlobalStyles.spaceBetweenRow}>
                     <Text style={styles.textCartFooter}>Shipping Charges</Text>
-                    <Text style={styles.textCartFooter}>Free</Text>
+                    <Text style={styles.textCartFooter}>AED 100.53</Text>
                 </View>
                 <View
-                    style={{ borderWidth: 0.5, borderColor: 'grey', marginTop: 10 }}></View>
+                    style={{ borderWidth: 0.5, borderColor: 'lightgrey', marginTop: 10 }}></View>
                 <View style={[GlobalStyles.spaceBetweenRow, { marginTop: 10 }]}>
-                    <Text style={styles.textCartFooterBold}>Total</Text>
-                    <Text style={styles.textCartFooterBold}>AED 16118.53</Text>
+                    <Text style={styles.textCartFooter}>Total</Text>
+                    <Text style={styles.textCartFooterBold}>AED 15100.53</Text>
                 </View>
             </View>
-            <View
+            <Pressable
+                onPress={() => navigation.navigate('/Checkout-Screen')}
                 style={[
                     {
                         padding: 15,
@@ -49,14 +54,14 @@ const CartFooter = () => {
                 ]}>
                 <Text
                     style={{
-                        fontFamily: Constant.fontFamily,
-                        fontWeight: 'bold',
-                        fontSize: 20,
+                        fontFamily: Constant.AvenirBold,
+                        // fontWeight: 'bold',
+                        fontSize: 16,
                         color: Constant.colors.whiteColor,
                     }}>
                     PROCEED TO CHECKOUT
                 </Text>
-            </View>
+            </Pressable>
         </View>
     );
 };
@@ -111,6 +116,8 @@ const CheckoutScreen = () => {
         { label: '4', value: '4' },
         { label: '5', value: '5' },
     ];
+    const [isRefundable, setisRefundable] = useState(false)
+    const [cod, setCod] = useState(false)
     const [value, setValue] = useState(null);
     const [isFocus, setIsFocus] = useState(false);
     return (
@@ -122,7 +129,19 @@ const CheckoutScreen = () => {
                     // padding: 20
                 }}>
                 <ScrollView style={[GlobalStyles.wrapper, { height: '70%', marginBottom: 200 }]}>
-
+                    <View style={{ flexDirection: 'row', borderRadius: 10, borderWidth: 1.5, width: 190, padding: 10, borderColor: Constant.colors.primaryColor }}>
+                        <AntDesign name="left" size={20} color={Constant.colors.primaryColor} />
+                        <Text style={{ color: Constant.colors.primaryColor, }}>BACK TO SHOPPING</Text>
+                    </View>
+                    <View style={styles.IconsContainer}>
+                        <View style={styles.iconBackground}>
+                            <FontAwesome5 name="truck" size={20} color="white" />
+                        </View>
+                        <View style={styles.iconSeparator} />
+                        <View style={styles.iconBackground}>
+                            <AntDesign name="creditcard" size={20} color="white" />
+                        </View>
+                    </View>
                     <View style={{ marginTop: 20 }}>
                         <Text style={styles.subheading}>Delivery Country</Text>
                         <View style={GlobalStyles.inputContainer}>
@@ -156,6 +175,13 @@ const CheckoutScreen = () => {
                     </View>
                     <View style={{ marginTop: 20 }}>
                         <View style={{ flexDirection: 'row', marginBottom: 20 }}>
+                            <View style={styles.isStockCodContainer}>
+                                <Pressable style={styles.codContainer} onPress={() => setisRefundable(!isRefundable)}>
+                                    <View style={isRefundable ? styles.inStockOuter : styles.outOfStockOuter}>
+                                        <View style={isRefundable ? styles.inStockInner : styles.outOfStockInner}></View>
+                                    </View>
+                                </Pressable>
+                            </View>
                             <Text style={{ fontFamily: Constant.fontFamily, color: '#716F6F', fontSize: 14, }}>
                                 Use this address for next purchase</Text>
                         </View>
@@ -163,7 +189,8 @@ const CheckoutScreen = () => {
 
                     </View>
                     <View style={{ marginTop: 20, marginBottom: 50 }}>
-                        <View style={{ backgroundColor: '#C89758', height: 61, width: 105, borderRadius: 3, justifyContent: 'center', }}>
+                        <View style={{ backgroundColor: '#C89758', height: 61, width: 105, borderRadius: 3, justifyContent: 'center', alignItems: 'center' }}>
+                            <FontAwesome5 name='money-bill' color='white' size={20} />
                             <Text style={{ color: '#FFFFFF', alignSelf: 'center' }}>ONLINE</Text>
                         </View>
                     </View>
@@ -175,7 +202,7 @@ const CheckoutScreen = () => {
                                 {cartData.length} Items</Text>
                             <Text style={{
                                 color: '#000', fontFamily: Constant.fontFamily, fontSize: 16, fontWeight: '600', textDecorationLine: 'underline',
-                                color: 'black', top:3
+                                color: 'black', top: 3
                             }}>
                                 EDIT</Text>
                         </View>
@@ -310,26 +337,72 @@ const styles = StyleSheet.create({
         color: Constant.colors.textColor,
         fontFamily: Constant.fontFamily,
     },
+    IconsContainer: {
+        marginTop: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    iconSeparator: {
+        borderWidth: 1,
+        width: 250,
+        borderColor: Constant.colors.primaryColor,
+    },
+    iconBackground: {
+        backgroundColor: Constant.colors.primaryColor,
+        borderRadius: 100,
+        padding: 5
+    },
     textCartFooterBold: {
         color: Constant.colors.textColor,
-        fontWeight: 'bold',
-        fontFamily: Constant.fontFamily,
+        // fontWeight: 'bold',
+        fontFamily: Constant.AvenirBold,
     },
     subheading: {
-        fontFamily: Constant.fontFamily,
+        fontFamily: Constant.AvenirBold,
         fontSize: 24,
-        fontWeight: '700',
+        // fontWeight: '700',
         color: '#000'
     },
-
-    textCartFooter: {
-        color: Constant.colors.textColor,
-        fontFamily: Constant.fontFamily,
+    inStockOuter: {
+        width: 42,
+        height: 22,
+        borderRadius: 20,
+        backgroundColor: Constant.colors.primaryColor,
+        marginTop: 2,
     },
-    textCartFooterBold: {
-        color: Constant.colors.textColor,
-        fontWeight: 'bold',
-        fontFamily: Constant.fontFamily,
+    isStockCodContainer: {
+        flexDirection: 'row',
+        marginBottom: Constant.margin,
+    },
+    codContainer: {
+        flexDirection: 'row',
+    },
+    outOfStockOuter: {
+        width: 42,
+        height: 22,
+        borderRadius: 20,
+        marginTop: 2,
+        backgroundColor: 'grey',
+    },
+    inStockInner: {
+        width: 18,
+        height: 18,
+        backgroundColor: Constant.colors.whiteColor,
+        borderRadius: 18,
+        position: 'absolute',
+        top: 2,
+        right: 2,
+    },
+    outOfStockInner: {
+        width: 18,
+        height: 18,
+        backgroundColor: Constant.colors.whiteColor,
+        borderWidth: 1,
+        borderColor: Constant.colors.bodyBg,
+        borderRadius: 18,
+        position: 'absolute',
+        top: 2,
+        left: 2,
     },
     container: {
         backgroundColor: 'white',

@@ -5,18 +5,19 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import GlobalStyles from '../../../shared/GlobalStyles';
 import BackHeader from '../../../components/BackHeader';
 import Constant from '../../../shared/Constant';
-import {Dropdown} from 'react-native-element-dropdown';
+import { Dropdown } from 'react-native-element-dropdown';
 import DrawerHeader from '../../../components/DrawerHeader';
-import {useNavigation} from '@react-navigation/native';
-
-const CustomButton = ({text}) => {
+import { useNavigation } from '@react-navigation/native';
+import LoginModel from '../../../components/LoginModel';
+import Modal from 'react-native-modal'
+const CustomButton = ({ text }) => {
   return (
     <View style={styles.button}>
-      <Text style={{color: Constant.colors.textColor, fontWeight: 'bold'}}>
+      <Text style={{ color: Constant.colors.textColor, fontFamily: Constant.AvenirBold }}>
         {text}
       </Text>
     </View>
@@ -25,11 +26,11 @@ const CustomButton = ({text}) => {
 const CustomButtonTwo = () => {
   return (
     <View style={styles.buttonTwo}>
-      <Text style={{color: 'white', fontWeight: 'bold'}}>Exclusive</Text>
+      <Text style={{ color: 'white', fontFamily: Constant.fontFamily }}>EXCLUSIVE</Text>
     </View>
   );
 };
-const DrawerNavButtons = ({text, destination}) => {
+const DrawerNavButtons = ({ text, destination }) => {
   const navigation = useNavigation();
   const handlePress = () => {
     navigation.navigate(destination);
@@ -48,14 +49,14 @@ const DrawerNavButtons = ({text, destination}) => {
 };
 const DrawerScreen = () => {
   const data = [
-    {label: 'Item 1', value: '1'},
-    {label: 'Item 2', value: '2'},
-    {label: 'Item 3', value: '3'},
-    {label: 'Item 4', value: '4'},
-    {label: 'Item 5', value: '5'},
-    {label: 'Item 6', value: '6'},
-    {label: 'Item 7', value: '7'},
-    {label: 'Item 8', value: '8'},
+    { label: 'Item 1', value: '1' },
+    { label: 'Item 2', value: '2' },
+    { label: 'Item 3', value: '3' },
+    { label: 'Item 4', value: '4' },
+    { label: 'Item 5', value: '5' },
+    { label: 'Item 6', value: '6' },
+    { label: 'Item 7', value: '7' },
+    { label: 'Item 8', value: '8' },
   ];
   const navigation = useNavigation();
 
@@ -65,14 +66,14 @@ const DrawerScreen = () => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const dataTwo = [
-    {label: 'Item 1', value: '1'},
-    {label: 'Item 2', value: '2'},
-    {label: 'Item 3', value: '3'},
-    {label: 'Item 4', value: '4'},
-    {label: 'Item 5', value: '5'},
-    {label: 'Item 6', value: '6'},
-    {label: 'Item 7', value: '7'},
-    {label: 'Item 8', value: '8'},
+    { label: 'Item 1', value: '1' },
+    { label: 'Item 2', value: '2' },
+    { label: 'Item 3', value: '3' },
+    { label: 'Item 4', value: '4' },
+    { label: 'Item 5', value: '5' },
+    { label: 'Item 6', value: '6' },
+    { label: 'Item 7', value: '7' },
+    { label: 'Item 8', value: '8' },
   ];
   const [valueTwo, setValueTwo] = useState(null);
   const [isFocusTwo, setIsFocusTwo] = useState(false);
@@ -85,7 +86,7 @@ const DrawerScreen = () => {
           <Text
             style={{
               color: Constant.colors.primaryColor,
-              fontFamily: Constant.fontFamily,
+              fontFamily: Constant.AvenirBold,
             }}>
             HOME
           </Text>
@@ -100,12 +101,12 @@ const DrawerScreen = () => {
 
         <View style={styles.container}>
           <View style={styles.row}>
-            <CustomButton text="Women" />
-            <CustomButton text="Men" />
+            <CustomButton text="WOMEN" />
+            <CustomButton text="MEN" />
           </View>
 
           <View style={styles.row}>
-            <CustomButton text="Shoes" />
+            <CustomButton text="SHOES" />
             <CustomButtonTwo />
           </View>
         </View>
@@ -116,8 +117,15 @@ const DrawerScreen = () => {
             destination="AboutScreen"
             text="ABOUT"
           />
-          <DrawerNavButtons text="ACCOUNT" />
-          <DrawerNavButtons text="ORDERS" />
+          <DrawerNavButtons
+            onPress={handlePress}
+            destination="LoginModel"
+            text="ACCOUNT" />
+
+          <DrawerNavButtons
+            onPress={handlePress}
+            destination="LoginModel"
+            text="ORDERS" />
           <DrawerNavButtons
             onPress={handlePress}
             destination="ContactScreen"
@@ -129,12 +137,14 @@ const DrawerScreen = () => {
             destination="RenderProducts"
           />
           <DrawerNavButtons
-            onPress={handlePress}
-            destination="RenderProducts"
+
             text="OFFERS"
           />
           <DrawerNavButtons text="العربية" />
-          <DrawerNavButtons text="TRACK YOUR ORDERS" />
+          <DrawerNavButtons
+            onPress={handlePress}
+            destination="TrackOrderScreen"
+            text="TRACK YOUR ORDERS" />
         </View>
 
         <View
@@ -155,7 +165,7 @@ const DrawerScreen = () => {
           }}>
           <View style={styles.Dropdowncontainer}>
             <Dropdown
-              style={[styles.dropdown, isFocus && {borderColor: 'blue'}]}
+              style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
               inputSearchStyle={styles.inputSearchStyle}
@@ -178,7 +188,7 @@ const DrawerScreen = () => {
           </View>
           <View style={styles.Dropdowncontainer}>
             <Dropdown
-              style={[styles.dropdown, isFocusTwo && {borderColor: 'blue'}]}
+              style={[styles.dropdown, isFocusTwo && { borderColor: 'blue' }]}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
               inputSearchStyle={styles.inputSearchStyle}
@@ -199,9 +209,14 @@ const DrawerScreen = () => {
               }}
             />
           </View>
+
         </View>
-      </ScrollView>
-    </View>
+
+        <View style={{ marginTop: 30 }}>
+
+        </View>
+      </ScrollView >
+    </View >
   );
 };
 
@@ -227,7 +242,7 @@ const styles = StyleSheet.create({
   },
   buttonTwo: {
     alignSelf: 'center',
-    backgroundColor: 'red',
+    backgroundColor: '#cb0000',
     justifyContent: 'center',
     alignItems: 'center',
     height: 35,
@@ -239,17 +254,19 @@ const styles = StyleSheet.create({
   navButtonText: {
     color: Constant.colors.textColor,
     fontSize: 14,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: Constant.fontFamily,
     alignSelf: 'flex-start',
   },
   headingDropdown: {
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: Constant.AvenirBold,
     color: Constant.colors.textColor,
   },
   //drawer
   Dropdowncontainer: {
     backgroundColor: 'white',
-    paddingVertical: 16,
+    paddingVertical: 14,
     // flex:2
   },
   dropdown: {
@@ -257,7 +274,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: 150,
     borderColor: 'gray',
-    backgroundColor: 'lightgrey',
+    // backgroundColor: 'lightgrey',
     borderWidth: 0.5,
     borderRadius: 8,
     paddingHorizontal: 8,
@@ -275,7 +292,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   placeholderStyle: {
-    fontSize: 16,
+    fontSize: 14,
+    color: Constant.colors.textColor
   },
   selectedTextStyle: {
     fontSize: 16,

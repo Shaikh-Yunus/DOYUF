@@ -93,8 +93,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     icon: {
-        width: 100,
-        height: 100,
+        width: 80,
+        height: 80,
         borderRadius: 50,
         borderWidth: 0.5,
         borderColor: Constant.colors.primaryColor,
@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'black',
-        fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 18,
         fontFamily: "AvenirNextLTPro-Bold"

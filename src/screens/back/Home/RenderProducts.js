@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -16,13 +16,13 @@ import BackHeader from '../../../components/BackHeader';
 import BottomTab from '../../../components/BottomTab';
 import Constant from '../../../shared/Constant';
 import Modal from 'react-native-modal';
-import {SubHeading} from '../../../components/SubHeading';
-import {useNavigation} from '@react-navigation/native';
+import { SubHeading } from '../../../components/SubHeading';
+import { useNavigation } from '@react-navigation/native';
 
 const data = [
   {
     id: 1,
-    image: Images.product1,
+    image: Images.bag1,
     madeIn: 'Gucci',
     name: 'Golden Heels',
     price: 4000,
@@ -31,7 +31,7 @@ const data = [
   },
   {
     id: 2,
-    image: Images.product1,
+    image: Images.Bag3,
     madeIn: 'Gucci',
     name: 'Golden Heels',
     price: 4000,
@@ -77,9 +77,13 @@ const data = [
   // Add more product data objects here
 ];
 
-const ProductCard = ({item}) => {
+const ProductCard = ({ item }) => {
+  const navigation = useNavigation()
+  const handleNavtoProdDetails = () => {
+    navigation.navigate('ProductDetailsScreen')
+  }
   return (
-    <View style={styles.card}>
+    <Pressable onPress={handleNavtoProdDetails} style={styles.card}>
       <Pressable style={styles.heartIconContainer}>
         <AntDesign name="hearto" size={20} color="black" />
       </Pressable>
@@ -91,7 +95,7 @@ const ProductCard = ({item}) => {
         <Text style={styles.slashedPrice}>{`AED ${item.slashedPrice}`}</Text>
       </View>
       <Text style={styles.price}>{`${item.discount}% Off`}</Text>
-    </View>
+    </Pressable>
   );
 };
 
@@ -111,11 +115,12 @@ const RenderProducts = () => {
   };
   return (
     <View style={GlobalStyles.container}>
-      <BackHeader />
+      <BackHeader disable={true}
+      />
       <FlatList
         data={data}
         numColumns={2}
-        renderItem={({item}) => <ProductCard item={item} />}
+        renderItem={({ item }) => <ProductCard item={item} />}
         keyExtractor={item => item.id.toString()}
       />
       <View
@@ -135,14 +140,14 @@ const RenderProducts = () => {
             flexDirection: 'row',
             marginBottom: 10,
           }}>
-          <Pressable onPress={handleSortPress} style={{flexDirection: 'row'}}>
+          <Pressable onPress={handleSortPress} style={{ flexDirection: 'row' }}>
             <Feather name="filter" color="white" size={20} />
-            <Text style={{color: 'white', marginLeft: 10}}>Sort</Text>
+            <Text style={{ color: 'white', marginLeft: 10 }}>Sort</Text>
           </Pressable>
           <View style={styles.separator} />
-          <Pressable onPress={handleFilterPress} style={{flexDirection: 'row'}}>
+          <Pressable onPress={handleFilterPress} style={{ flexDirection: 'row' }}>
             <Feather name="filter" color="white" size={20} />
-            <Text style={{color: 'white', marginLeft: 10}}>Filter</Text>
+            <Text style={{ color: 'white', marginLeft: 10 }}>Filter</Text>
           </Pressable>
         </View>
       </View>
@@ -160,11 +165,17 @@ const RenderProducts = () => {
                 <AntDesign name="close" size={24} color="black" />
               </TouchableOpacity>
             </View>
-            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{
+
+            }}>
               <Text style={styles.modalText}>Default</Text>
+              <View style={styles.line}></View>
               <Text style={styles.modalText}>Popularity</Text>
+              <View style={styles.line}></View>
               <Text style={styles.modalText}>Latest</Text>
+              <View style={styles.line}></View>
               <Text style={styles.modalText}>Price (Low)</Text>
+              <View style={styles.line}></View>
               <Text style={styles.modalText}>Price (High)</Text>
             </View>
           </View>
@@ -182,6 +193,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     margin: 5,
+    // flexWrap: 'wrap',
     // alignItems: 'center',
   },
   heartIconContainer: {
@@ -189,6 +201,8 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     padding: 5,
     marginBottom: 3,
+    position: 'absolute',
+    zIndex: 1,
     alignSelf: 'flex-end',
   },
   image: {
@@ -198,11 +212,11 @@ const styles = StyleSheet.create({
   madeIn: {
     color: 'black',
     marginTop: 10,
-    fontFamily: Constant.fontFamily,
-    fontWeight: 'bold',
+    fontFamily: Constant.AvenirBold,
+    // fontWeight: 'bold',
   },
   name: {
-    color: 'black',
+    color: '#4a4a4a',
     marginTop: 5,
     // fontWeight: 'bold',
     fontFamily: Constant.fontFamily,
@@ -212,15 +226,17 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   price: {
-    color: 'red',
-    fontWeight: 'bold',
-    fontFamily: Constant.fontFamily,
+    color: '#cb0000',
+    fontSize: 12,
+    // fontWeight: 'bold',
+    fontFamily: Constant.AvenirBold,
   },
   slashedPrice: {
     color: 'black',
     marginLeft: 5,
+    fontSize: 12,
     textDecorationLine: 'line-through',
-    fontFamily: Constant.fontFamily,
+    fontFamily: Constant.AvenirBold,
   },
   productContainer: {
     flexDirection: 'row',
@@ -255,12 +271,20 @@ const styles = StyleSheet.create({
   },
   modalHeaderText: {
     fontSize: 18,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: Constant.AvenirBold,
     color: 'black',
   },
   modalText: {
     fontSize: 16,
     color: 'black',
     paddingVertical: 8,
+    fontFamily: Constant.fontFamily,
+    // borderBottomWidth:0.5,
+    alignSelf: 'center'
   },
+  line: {
+    borderBottomWidth: 0.5,
+    borderBottomColor: 'lightgrey'
+  }
 });

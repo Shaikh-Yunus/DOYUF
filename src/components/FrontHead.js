@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 const FrontHead = ({ text }) => {
     const navigation = useNavigation()
     return (
+
         <View style={{
             padding: 15,
             height: 60,
@@ -19,20 +20,14 @@ const FrontHead = ({ text }) => {
             shadowRadius: 2,
             elevation: 6
         }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-
-                    <AntDesign style={{}} name='left' size={25} color="black" />
-                </TouchableOpacity>
-                <Text style={{
-                    flex: 1,
-                    fontSize: 16,
-                    color: Constant.colors.textColor,
-                    fontWeight: 'bold',
-                    textAlign: 'center',
-                    fontFamily: Constant.fontFamily,
-                }}>{text}</Text>
-            </View>
+            <Text style={{
+                flex: 1,
+                fontSize: 16,
+                color: Constant.colors.textColor,
+                // fontWeight: 'bold',
+                // textAlign: 'center',
+                fontFamily: Constant.fontFamily,
+            }}>Home / My Bag</Text>
         </View>
 
     )

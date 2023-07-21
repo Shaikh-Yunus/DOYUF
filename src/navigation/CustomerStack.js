@@ -8,10 +8,14 @@ import CartScreen from '../screens/back/Cart/CartScreen';
 import AccountScreen from '../screens/back/Account/AccountScreen';
 import DrawerScreen from '../screens/back/Home/DrawerScreen';
 import RenderProducts from '../screens/back/Home/RenderProducts';
+import ProductDetailsScreen from '../screens/back/Home/ProductDetailsScreen';
 import FilterScreen from '../screens/back/Home/FilterScreen';
 import AboutScreen from '../screens/back/Home/AboutScreen';
 import ReturnPolicyScreen from '../screens/back/ReturnPolicy/ReturnPolicyScreen';
 import CheckoutScreen from '../screens/back/Cart/CheckoutScreen';
+import LoginModel from '../components/LoginModel';
+import ContactScreen from '../screens/back/Home/ContactScreen';
+import TrackOrderScreen from '../screens/back/Home/TrackOrderScreen';
 const Stack = createNativeStackNavigator();
 const screenOptions = {
   headerShown: false,
@@ -33,8 +37,12 @@ const CustomerStack = () => {
       }}>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="DrawerScreen" component={DrawerScreen} />
+      <Stack.Screen name="LoginModel" component={LoginModel} />
+      <Stack.Screen name="ContactScreen" component={ContactScreen} />
+      <Stack.Screen name="TrackOrderScreen" component={TrackOrderScreen} />
       <Stack.Screen name="AboutScreen" component={AboutScreen} />
       <Stack.Screen name="RenderProducts" component={RenderProducts} />
+      <Stack.Screen name="ProductDetailsScreen" component={ProductDetailsScreen} />
       <Stack.Screen name="FilterScreen" component={FilterScreen} />
       <Stack.Screen name="/Account-Screen" component={AccountScreen} />
       <Stack.Screen name="/WishList-Screen" component={WishListScreen} />
@@ -57,6 +65,7 @@ const CartStack = () => {
   return;
   <Stack.Navigator initialRouteName="CartScreen" screenOptions={screenOptions}>
     <Stack.Screen name="CartScreen" component={CartScreen} />
+    <Stack.Screen name="CartScreen" component={CheckoutScreen} />
   </Stack.Navigator>;
 };
 const AccountStack = () => {
