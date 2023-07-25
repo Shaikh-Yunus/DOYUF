@@ -47,7 +47,9 @@ const styles = StyleSheet.create({
     //     width: 155
     // },
     swiperItem: {
-        height: 150,
+        paddingHorizontal:10,
+        paddingBottom:30,
+        // height: 0,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -67,13 +69,17 @@ const styles = StyleSheet.create({
         width: 25,
         height: 5,
         borderRadius: 5,
-        backgroundColor: 'grey',
+        backgroundColor: 'black',
         marginLeft: 3,
         marginRight: 3,
         marginTop: 3,
         marginBottom: 3,
+        // position:'absolute',
+        // top: 20
     },
     activeDot: {
         backgroundColor: Constant.colors.primaryColor,
+        // position:'absolute',
+        // top: 20
     },
 });

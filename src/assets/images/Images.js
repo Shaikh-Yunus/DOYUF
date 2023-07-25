@@ -12,7 +12,7 @@ const Images = {
     Sunglasses1: require('./Sunglasses1.jpg'),
     Shoes1: require('./Shoes1.jpg'),
     product1: require('./product1.png'),
-    logo: require('./Logo.png'),
+    logo: require('./logobeta.png'),
     truck: require('../icons/truck.png'),
     enquiry: require('../icons/enquiry.png'),
     trusted: require('../icons/trusted.png'),

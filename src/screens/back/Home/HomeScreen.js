@@ -263,7 +263,7 @@ const HomeScreen = () => {
                   borderWidth: 0.5,
                   marginTop: 30,
                   color: 'lightGrey',
-                  marginHorizontal: 100,
+                  // marginHorizontal: 100,
                 }}></View>
               <View stlye={{}}>
                 <Image
@@ -348,6 +348,7 @@ const styles = StyleSheet.create({
   item: {
     // backgroundColor: '#f2f2f2',
     borderRadius: 8,
+    borderColor:'lightgrey',
     padding: 8,
     marginRight: 8,
     alignItems: 'center',
@@ -358,15 +359,16 @@ const styles = StyleSheet.create({
     height: 80,
     marginBottom: 8,
     borderWidth: 0.5,
+    borderColor:'lightgrey',
     borderColor: Constant.colors.textColor,
     borderRadius: 5,
   },
   category: {
     fontSize: 16,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     textAlign: 'center',
     color: Constant.colors.textColor,
-    fontFamily: 'AvenirNextLTPro-Bold',
+    fontFamily: 'AvenirNextLTPro',
   },
   // Recommended for you design
   card: {

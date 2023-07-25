@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -16,8 +16,9 @@ import BackHeader from '../../../components/BackHeader';
 import BottomTab from '../../../components/BottomTab';
 import Constant from '../../../shared/Constant';
 import Modal from 'react-native-modal';
-import { SubHeading } from '../../../components/SubHeading';
-import { useNavigation } from '@react-navigation/native';
+import {SubHeading} from '../../../components/SubHeading';
+import {useNavigation} from '@react-navigation/native';
+import {Dimensions,useWindowDimensions } from 'react-native';
 
 const data = [
   {
@@ -76,18 +77,41 @@ const data = [
   },
   // Add more product data objects here
 ];
-
-const ProductCard = ({ item }) => {
-  const navigation = useNavigation()
-  const handleNavtoProdDetails = () => {
-    navigation.navigate('ProductDetailsScreen')
+const calculateNumColumns = () => {
+  const screenWidth = Dimensions.get('window').width;
+  if (screenWidth >= 768) {
+    // For tablets and larger screens
+    return 3;
+  } else if (screenWidth >= 480) {
+    // For big screen mobile devices
+    return 2;
+  } else {
+    // For smaller mobile devices
+    return 2;
   }
+};
+const ProductCard = ({item}) => {
+  const navigation = useNavigation();
+  const handleNavtoProdDetails = () => {
+    navigation.navigate('ProductDetailsScreen');
+  };
+  const numColumns = calculateNumColumns();
+  const containerWidth = useWindowDimensions().width;
+
+  // Adjust the image width and height based on the container width and number of columns
+  const imageWidth = (containerWidth - (numColumns + 1) * 10) / numColumns;
+  const imageHeight = imageWidth;
   return (
     <Pressable onPress={handleNavtoProdDetails} style={styles.card}>
       <Pressable style={styles.heartIconContainer}>
         <AntDesign name="hearto" size={20} color="black" />
       </Pressable>
-      <Image source={item.image} style={styles.image} resizeMode="cover" />
+      <Image
+        source={item.image}
+        style={[styles.image, {width: imageWidth, height: imageHeight}]}
+        resizeMode="cover"
+      />
+
       <Text style={styles.madeIn}>{item.madeIn}</Text>
       <Text style={styles.name}>{item.name}</Text>
       <View style={styles.priceContainer}>
@@ -113,15 +137,17 @@ const RenderProducts = () => {
   const handleFilterPress = () => {
     navigation.navigate('FilterScreen');
   };
+  const numColumns = calculateNumColumns();
+
   return (
     <View style={GlobalStyles.container}>
-      <BackHeader disable={true}
-      />
+      <BackHeader disable={true} />
       <FlatList
         data={data}
-        numColumns={2}
-        renderItem={({ item }) => <ProductCard item={item} />}
+        numColumns={numColumns}
+        renderItem={({item}) => <ProductCard item={item} />}
         keyExtractor={item => item.id.toString()}
+        // contentContainerStyle={styles.productContainer}
       />
       <View
         style={{
@@ -140,14 +166,14 @@ const RenderProducts = () => {
             flexDirection: 'row',
             marginBottom: 10,
           }}>
-          <Pressable onPress={handleSortPress} style={{ flexDirection: 'row' }}>
+          <Pressable onPress={handleSortPress} style={{flexDirection: 'row'}}>
             <Feather name="filter" color="white" size={20} />
-            <Text style={{ color: 'white', marginLeft: 10 }}>Sort</Text>
+            <Text style={{color: 'white', marginLeft: 10}}>Sort</Text>
           </Pressable>
           <View style={styles.separator} />
-          <Pressable onPress={handleFilterPress} style={{ flexDirection: 'row' }}>
+          <Pressable onPress={handleFilterPress} style={{flexDirection: 'row'}}>
             <Feather name="filter" color="white" size={20} />
-            <Text style={{ color: 'white', marginLeft: 10 }}>Filter</Text>
+            <Text style={{color: 'white', marginLeft: 10}}>Filter</Text>
           </Pressable>
         </View>
       </View>
@@ -165,9 +191,7 @@ const RenderProducts = () => {
                 <AntDesign name="close" size={24} color="black" />
               </TouchableOpacity>
             </View>
-            <View style={{
-
-            }}>
+            <View style={{}}>
               <Text style={styles.modalText}>Default</Text>
               <View style={styles.line}></View>
               <Text style={styles.modalText}>Popularity</Text>
@@ -196,6 +220,9 @@ const styles = StyleSheet.create({
     // flexWrap: 'wrap',
     // alignItems: 'center',
   },
+  productContainer: {
+    padding: 5,
+  },
   heartIconContainer: {
     backgroundColor: '#e9ecef',
     borderRadius: 100,
@@ -212,6 +239,7 @@ const styles = StyleSheet.create({
   madeIn: {
     color: 'black',
     marginTop: 10,
+    fontSize:20,
     fontFamily: Constant.AvenirBold,
     // fontWeight: 'bold',
   },
@@ -281,10 +309,10 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     fontFamily: Constant.fontFamily,
     // borderBottomWidth:0.5,
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   line: {
     borderBottomWidth: 0.5,
-    borderBottomColor: 'lightgrey'
-  }
+    borderBottomColor: 'lightgrey',
+  },
 });

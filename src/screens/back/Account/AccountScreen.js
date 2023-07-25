@@ -15,6 +15,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
 import ScreenHeading from '../../../components/ScreenHeading';
+import Constant from '../../../shared/Constant';
 
 const OrderItem = ({order}) => {
   return (
@@ -78,7 +79,7 @@ const AccountScreen = () => {
 
         {showProfile && (
           <View style={styles.profileSection}>
-            <Text style={styles.sectionHeading}>User Profile Section</Text>
+            <Text style={styles.sectionHeading}>My Profile</Text>
             {/* Render the user's profile */}
             <Input placeholder="Name" />
             <Input placeholder="Email Id" />
@@ -108,7 +109,8 @@ export default AccountScreen;
 const styles = StyleSheet.create({
   card: {
     borderWidth: 1,
-    borderColor: 'grey',
+    borderColor: 'lightgrey',
+    borderRadius:5,
     padding: 10,
     marginBottom: 10,
   },
@@ -120,17 +122,20 @@ const styles = StyleSheet.create({
   },
   orderNumber: {
     fontSize: 16,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     color: 'black',
+    fontFamily:Constant.AvenirBold
   },
   orderAmount: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 14,
+    fontFamily:Constant.fontFamily,
     color: 'black',
   },
   orderPlaced: {
     fontSize: 14,
-    color: 'black',
+    color: 'grey',
+    fontFamily:Constant.fontFamily,
+
   },
   section: {
     marginBottom: 30,
@@ -140,7 +145,7 @@ const styles = StyleSheet.create({
   },
   sectionText: {
     marginLeft: 10,
-    fontFamily: 'YourFontFamily',
+    fontFamily: Constant.fontFamily,
     flex: 1,
     color:'#000'
   },
@@ -151,7 +156,7 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 20,
     fontWeight: 'bold',
-    fontFamily: 'YourFontFamily',
+    fontFamily: Constant.fontFamily,
     marginBottom: 10,
   },
 });

@@ -17,7 +17,7 @@ import Modal from 'react-native-modal'
 const CustomButton = ({ text }) => {
   return (
     <View style={styles.button}>
-      <Text style={{ color: Constant.colors.textColor, fontFamily: Constant.AvenirBold }}>
+      <Text style={{ color: Constant.colors.textColor, fontFamily: Constant.fontFamily }}>
         {text}
       </Text>
     </View>

@@ -1,29 +1,33 @@
-import { StyleSheet, Text, View, FlatList, Image, TouchableOpacity, Pressable } from 'react-native';
-import React, { useState } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  Pressable,
+  Dimensions,
+} from 'react-native';
+import React, {useState} from 'react';
 import Images from '../../../assets/images/Images';
 import GlobalStyles from '../../../shared/GlobalStyles';
-import AntDesign from 'react-native-vector-icons/AntDesign'
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FrontHead from '../../../components/FrontHead';
 import Constant from '../../../shared/Constant';
 import BottomTab from '../../../components/BottomTab';
-import { Dropdown } from 'react-native-element-dropdown';
-import { useNavigation } from '@react-navigation/native';
-
+import {Dropdown} from 'react-native-element-dropdown';
+import {useNavigation} from '@react-navigation/native';
+const SCREEN_WIDTH = Dimensions.get('window').width;
 const CartFooter = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   return (
-    <View
-      style={
-        {
-          // padding: 20,
-          // marginTop: 10,
-        }
-      }>
+    <View>
       <View
         style={{
-          padding: 20,
-          marginTop: 10,
+          padding: 10,
+          // marginTop: 10,
         }}>
         <View style={GlobalStyles.spaceBetweenRow}>
           <Text style={styles.textCartFooter}>SubTotal</Text>
@@ -34,9 +38,13 @@ const CartFooter = () => {
           <Text style={styles.textCartFooter}>AED 100.53</Text>
         </View>
         <View
-          style={{ borderWidth: 0.5, borderColor: 'lightgrey', marginTop: 10 }}></View>
-        <View style={[GlobalStyles.spaceBetweenRow, { marginTop: 10 }]}>
-          <Text style={styles.textCartFooter}>Total</Text>
+          style={{
+            borderWidth: 0.5,
+            borderColor: 'lightgrey',
+            marginTop: 10,
+          }}></View>
+        <View style={[GlobalStyles.spaceBetweenRow, {marginTop: 10}]}>
+          <Text style={styles.textCartFooterBold}>Total</Text>
           <Text style={styles.textCartFooterBold}>AED 15100.53</Text>
         </View>
       </View>
@@ -66,7 +74,7 @@ const CartFooter = () => {
 };
 
 const CartScreen = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const cartData = [
     {
       id: 1,
@@ -110,11 +118,11 @@ const CartScreen = () => {
     },
   ];
   const data = [
-    { label: '1', value: '1' },
-    { label: '2', value: '2' },
-    { label: '3', value: '3' },
-    { label: '4', value: '4' },
-    { label: '5', value: '5' },
+    {label: '1', value: '1'},
+    {label: '2', value: '2'},
+    {label: '3', value: '3'},
+    {label: '4', value: '4'},
+    {label: '5', value: '5'},
   ];
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
@@ -122,29 +130,33 @@ const CartScreen = () => {
   return (
     <View style={GlobalStyles.container}>
       <FrontHead />
-      <View
-        style={{
-          flex: 1,
-          // padding: 20
-        }}>
-        <View style={[GlobalStyles.wrapper, { height: '70%' }]}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+      <View style={styles.contentContainer}>
+        <View style={[GlobalStyles.wrapper, {height: '80%'}]}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <AntDesign style={{}} name='left' size={25} color="black" />
+              <AntDesign style={{}} name="left" size={25} color="black" />
             </TouchableOpacity>
-            <Text style={{
-              flex: 1,
-              fontSize: 16,
-              color: Constant.colors.textColor,
-              // fontWeight: 'bold',
-              textAlign: 'center',
-              fontFamily: Constant.AvenirBold,
-            }}>My Shopping Bag (5 Items)</Text>
+            <Text
+              style={{
+                flex: 1,
+                fontSize: 16,
+                color: Constant.colors.textColor,
+                // fontWeight: 'bold',
+                textAlign: 'center',
+                fontFamily: Constant.AvenirBold,
+              }}>
+              My Shopping Bag (5 Items)
+            </Text>
           </View>
           <FlatList
             data={cartData}
             keyExtractor={item => item.id.toString()}
-            renderItem={({ item }) => (
+            renderItem={({item}) => (
               <View
                 style={{
                   flexDirection: 'row',
@@ -155,49 +167,52 @@ const CartScreen = () => {
                 }}>
                 <View
                   style={{
-                    width: 125,
-                    height: 125,
+                    // width: 125,
+                    // height: 125,
+                    // backgroundColor: 'lightgrey',
+                    // marginRight: 10,
+                    width: SCREEN_WIDTH * 0.25, // Adjust the width as needed
+                    height: SCREEN_WIDTH * 0.25, // Maintain aspect ratio
                     backgroundColor: 'lightgrey',
                     marginRight: 10,
                   }}>
                   <Image
                     source={item.image}
-                    style={{ width: '100%', height: '100%' }}
+                    style={{width: '100%', height: '100%'}}
                     resizeMode="contain"
                   />
                 </View>
-                <View >
+                <View style={{flex: 1}}>
                   <View
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                       alignItems: 'center',
+                      marginBottom: 10, // Add margin to create space between product name and dropdown
                       // flexWrap: 'wrap',
                     }}>
-                    <View style={{}} >
+                    <View style={{flex: 2}}>
                       <Text
                         style={{
                           marginVertical: 5,
                           fontSize: 16,
                           color: 'black',
-                          fontWeight: 'bold',
+                          // fontWeight: 'bold',
                           fontFamily: Constant.fontFamily,
-                        }}
-                      >
+                        }}>
                         {item.p_name}
-
                       </Text>
                       {/* {item.p_name.length > 10
-                          ? `${item.p_name.substring(0, 10)}...`
-                          : item.p_name} */}
+                      ? `${item.p_name.substring(0, 10)}...`
+                      : item.p_name} */}
                     </View>
                     <View style={{}}>
                       <Dropdown
                         style={[
                           styles.dropdown,
-                          isFocus && { borderColor: 'blue' },
+                          isFocus && {borderColor: 'blue'},
                         ]}
-                        placeholderStyle={styles.placeholderStyle}
+                        // placeholderStyle={styles.placeholderStyle}
                         selectedTextStyle={styles.selectedTextStyle}
                         // inputSearchStyle={styles.inputSearchStyle}
                         iconStyle={styles.iconStyle}
@@ -207,7 +222,8 @@ const CartScreen = () => {
                         labelField="label"
                         valueField="value"
                         placeholder={!isFocus ? item.value : '...'}
-                        value={value}
+                        // value={value}
+                        value={data[0].value} // Set the value to the value of the first item in the 
                         onFocus={() => setIsFocus(true)}
                         onBlur={() => setIsFocus(false)}
                         onChange={item => {
@@ -216,8 +232,9 @@ const CartScreen = () => {
                         }}
                       />
                     </View>
+                    <Text>   X</Text>
                   </View>
-                  <View style={{ flexDirection: 'row' }}>
+                  <View style={{flexDirection: 'row'}}>
                     <Text
                       style={{
                         marginVertical: 5,
@@ -232,7 +249,8 @@ const CartScreen = () => {
                         marginVertical: 5,
                         fontSize: 14,
                         color: 'black',
-                        fontWeight: 'bold',
+                        // fontWeight: '700',
+                        fontFamily:Constant.fontFamily
                       }}>
                       {item.brand}
                     </Text>
@@ -242,7 +260,8 @@ const CartScreen = () => {
                       marginVertical: 5,
                       fontSize: 14,
                       color: 'black',
-                      fontWeight: 'bold',
+                      // fontWeight: 'bold',
+                      fontFamily: Constant.AvenirBold,
                     }}>
                     AED {item.price}
                   </Text>
@@ -253,15 +272,19 @@ const CartScreen = () => {
         </View>
         <View
           style={{
-            position: 'absolute',
-            bottom: 0,
-            width: '100%',
-            marginBottom: 15,
+            backgroundColor: '#FFFFFF',
+            borderTopWidth: 0.5,
+            borderColor: 'lightgrey',
+            zIndex: 10,
+            // position: 'absolute',
+            // bottom: 0,
+            // width: '100%',
+            // marginBottom: 15,
           }}>
           <CartFooter />
         </View>
       </View>
-    </View >
+    </View>
   );
 };
 
@@ -275,24 +298,29 @@ const styles = StyleSheet.create({
   textCartFooter: {
     color: Constant.colors.textColor,
     // fontWeight: 'bold',
-    fontFamily: Constant.fontFamily,
+    fontFamily: Constant.avne,
   },
   textCartFooterBold: {
     color: Constant.colors.textColor,
     // fontWeight: 'bold',
     fontFamily: Constant.AvenirBold,
   },
+  contentContainer: {
+    flex: 1,
+    // paddingHorizontal: 16,
+    paddingBottom: 70, // Make room for the footer
+  },
   container: {
     backgroundColor: 'white',
     // padding: 16,
   },
   dropdown: {
-    height: 25,
+    height: 20,
     width: 50,
-    borderColor: 'gray',
+    borderColor: 'black',
     borderWidth: 0.5,
     // borderRadius: 8,
-    paddingHorizontal: 8,
+    paddingHorizontal: 7,
     // marginLeft: 30
   },
   icon: {
@@ -309,18 +337,18 @@ const styles = StyleSheet.create({
   },
   placeholderStyle: {
     fontSize: 16,
-    color: 'grey'
+    color: 'grey',
   },
   selectedTextStyle: {
     fontSize: 16,
-    color: 'grey'
+    color: 'grey',
   },
   iconStyle: {
     width: 20,
     height: 20,
   },
   inputSearchStyle: {
-    height: 40,
-    fontSize: 16,
+    // height: 40,
+    // fontSize: 16,
   },
 });

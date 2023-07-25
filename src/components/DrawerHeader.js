@@ -543,9 +543,9 @@ const styles = StyleSheet.create({
   title: {
     color: '#000',
     fontSize: 18,
-    fontWeight: '800',
+    // fontWeight: '800',
     marginBottom: 10,
-    fontFamily: Constant.fontFamily,
+    fontFamily: Constant.regular,
   },
   buttonContainer: {
     flexDirection: 'row',

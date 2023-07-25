@@ -7,7 +7,7 @@ const SubHeading = ({text}) => {
     <View style={{marginTop: 30, flexDirection: 'row'}}>
       <Text
         style={{
-          fontWeight: 'bold',
+          // fontWeight: 'bold',
           color: Constant.colors.primaryColor,
           fontSize: 20,
         }}>
@@ -21,7 +21,7 @@ const SubHeading = ({text}) => {
           // fontWeight: 'bold',
           color: Constant.colors.textColor,
           fontSize: 18,
-          fontFamily: 'AvenirNextLTPro',
+          fontFamily: Constant.AvenirBold,
         }}>
         {text}
       </Text>
