@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     color: '#4a4a4a',
     marginTop: 5,
     // fontWeight: 'bold',
-    fontFamily: Constant.fontFamily,
+    fontFamily: Constant.medium,
   },
   priceContainer: {
     flexDirection: 'row',

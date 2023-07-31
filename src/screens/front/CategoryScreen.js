@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: Constant.colors.textColor,
-    fontWeight: 'bold',
-    fontFamily: Constant.fontFamily,
+    // fontWeight: 'bold',
+    fontFamily: Constant.AvenirBold,
   },
 });

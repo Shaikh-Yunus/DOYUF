@@ -137,12 +137,13 @@ const styles = StyleSheet.create({
   madeIn: {
     color: 'black',
     marginTop: 10,
-    fontFamily: Constant.fontFamily,
+    fontFamily: Constant.medium,
   },
   name: {
     color: 'black',
     marginTop: 5,
     // fontWeight: 'bold',
+    fontSize:16,
     fontFamily: Constant.AvenirBold,
   },
   priceContainer: {

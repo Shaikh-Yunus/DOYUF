@@ -83,7 +83,7 @@ const HomeScreen = () => {
   );
   const [searchPress, setSearchPress] = useState(false);
   const [isSearchTouched, setIsSearchTouched] = useState(false);
-  console.log("this is isSearchTouched=>",isSearchTouched);
+  console.log('this is isSearchTouched=>', isSearchTouched);
   const handleSearchInputTouch = () => {
     setIsSearchTouched(true);
   };
@@ -348,7 +348,7 @@ const styles = StyleSheet.create({
   item: {
     // backgroundColor: '#f2f2f2',
     borderRadius: 8,
-    borderColor:'lightgrey',
+    borderColor: 'lightgrey',
     padding: 8,
     marginRight: 8,
     alignItems: 'center',
@@ -359,7 +359,7 @@ const styles = StyleSheet.create({
     height: 80,
     marginBottom: 8,
     borderWidth: 0.5,
-    borderColor:'lightgrey',
+    borderColor: 'lightgrey',
     borderColor: Constant.colors.textColor,
     borderRadius: 5,
   },
@@ -368,7 +368,7 @@ const styles = StyleSheet.create({
     // fontWeight: 'bold',
     textAlign: 'center',
     color: Constant.colors.textColor,
-    fontFamily: 'AvenirNextLTPro',
+    fontFamily: Constant.medium,
   },
   // Recommended for you design
   card: {

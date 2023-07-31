@@ -507,6 +507,7 @@ const styles = StyleSheet.create({
   nameText: {
     color: 'black',
     fontSize: 18,
+    fontFamily:Constant.medium,
     // fontWeight: 'bold',
   },
   pricesContainer: {

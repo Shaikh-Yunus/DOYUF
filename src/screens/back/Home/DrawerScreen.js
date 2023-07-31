@@ -4,20 +4,27 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
+  FlatList,
+  Image,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import GlobalStyles from '../../../shared/GlobalStyles';
 import BackHeader from '../../../components/BackHeader';
 import Constant from '../../../shared/Constant';
-import { Dropdown } from 'react-native-element-dropdown';
+import {Dropdown} from 'react-native-element-dropdown';
 import DrawerHeader from '../../../components/DrawerHeader';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import LoginModel from '../../../components/LoginModel';
-import Modal from 'react-native-modal'
-const CustomButton = ({ text }) => {
+import Modal from 'react-native-modal';
+import Images from '../../../assets/images/Images';
+const CustomButton = ({text}) => {
   return (
     <View style={styles.button}>
-      <Text style={{ color: Constant.colors.textColor, fontFamily: Constant.fontFamily }}>
+      <Text
+        style={{
+          color: Constant.colors.textColor,
+          fontFamily: Constant.fontFamily,
+        }}>
         {text}
       </Text>
     </View>
@@ -26,11 +33,13 @@ const CustomButton = ({ text }) => {
 const CustomButtonTwo = () => {
   return (
     <View style={styles.buttonTwo}>
-      <Text style={{ color: 'white', fontFamily: Constant.fontFamily }}>EXCLUSIVE</Text>
+      <Text style={{color: 'white', fontFamily: Constant.fontFamily}}>
+        EXCLUSIVE
+      </Text>
     </View>
   );
 };
-const DrawerNavButtons = ({ text, destination }) => {
+const DrawerNavButtons = ({text, destination}) => {
   const navigation = useNavigation();
   const handlePress = () => {
     navigation.navigate(destination);
@@ -48,17 +57,37 @@ const DrawerNavButtons = ({ text, destination }) => {
   );
 };
 const DrawerScreen = () => {
-  const data = [
-    { label: 'Item 1', value: '1' },
-    { label: 'Item 2', value: '2' },
-    { label: 'Item 3', value: '3' },
-    { label: 'Item 4', value: '4' },
-    { label: 'Item 5', value: '5' },
-    { label: 'Item 6', value: '6' },
-    { label: 'Item 7', value: '7' },
-    { label: 'Item 8', value: '8' },
-  ];
   const navigation = useNavigation();
+
+  // useEffect(() => {
+  //   CountryData();
+  // }, []);
+
+  const [CountryList, setCountryList] = useState();
+  const CountryData = async () => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+    };
+
+    await fetch(`${Constant.BASE_URL + 'country'}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        // console.log(result);
+        setCountryList(result.countries);
+      })
+      .catch(error => console.log('error', error));
+  };
+  const data = [
+    {label: 'Item 1', value: '1'},
+    {label: 'Item 2', value: '2'},
+    {label: 'Item 3', value: '3'},
+    {label: 'Item 4', value: '4'},
+    {label: 'Item 5', value: '5'},
+    {label: 'Item 6', value: '6'},
+    {label: 'Item 7', value: '7'},
+    {label: 'Item 8', value: '8'},
+  ];
 
   const handlePress = () => {
     navigation.navigate(destination);
@@ -66,18 +95,22 @@ const DrawerScreen = () => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const dataTwo = [
-    { label: 'Item 1', value: '1' },
-    { label: 'Item 2', value: '2' },
-    { label: 'Item 3', value: '3' },
-    { label: 'Item 4', value: '4' },
-    { label: 'Item 5', value: '5' },
-    { label: 'Item 6', value: '6' },
-    { label: 'Item 7', value: '7' },
-    { label: 'Item 8', value: '8' },
+    {label: 'Item 1', value: '1'},
+    {label: 'Item 2', value: '2'},
+    {label: 'Item 3', value: '3'},
+    {label: 'Item 4', value: '4'},
+    {label: 'Item 5', value: '5'},
+    {label: 'Item 6', value: '6'},
+    {label: 'Item 7', value: '7'},
+    {label: 'Item 8', value: '8'},
   ];
   const [valueTwo, setValueTwo] = useState(null);
   const [isFocusTwo, setIsFocusTwo] = useState(false);
-
+  const renderItem = ({item}) => (
+    <View style={styles.item}>
+      <Text>{item.country}</Text>
+    </View>
+  );
   return (
     <View style={GlobalStyles.container}>
       <DrawerHeader />
@@ -101,12 +134,21 @@ const DrawerScreen = () => {
 
         <View style={styles.container}>
           <View style={styles.row}>
-            <CustomButton text="WOMEN" />
-            <CustomButton text="MEN" />
+            <Image
+              style={styles.DrawerButtonImage}
+              source={Images.DrawerButton1}
+            />
+            <Image
+              style={styles.DrawerButtonImage}
+              source={Images.DrawerButton2}
+            />
           </View>
 
           <View style={styles.row}>
-            <CustomButton text="SHOES" />
+            <Image
+              style={styles.DrawerButtonImage}
+              source={Images.DrawerButton3}
+            />
             <CustomButtonTwo />
           </View>
         </View>
@@ -120,12 +162,14 @@ const DrawerScreen = () => {
           <DrawerNavButtons
             onPress={handlePress}
             destination="LoginModel"
-            text="ACCOUNT" />
+            text="ACCOUNT"
+          />
 
           <DrawerNavButtons
             onPress={handlePress}
             destination="LoginModel"
-            text="ORDERS" />
+            text="ORDERS"
+          />
           <DrawerNavButtons
             onPress={handlePress}
             destination="ContactScreen"
@@ -136,15 +180,13 @@ const DrawerScreen = () => {
             onPress={handlePress}
             destination="RenderProducts"
           />
-          <DrawerNavButtons
-
-            text="OFFERS"
-          />
+          <DrawerNavButtons text="OFFERS" />
           <DrawerNavButtons text="العربية" />
           <DrawerNavButtons
             onPress={handlePress}
             destination="TrackOrderScreen"
-            text="TRACK YOUR ORDERS" />
+            text="TRACK YOUR ORDERS"
+          />
         </View>
 
         <View
@@ -165,7 +207,7 @@ const DrawerScreen = () => {
           }}>
           <View style={styles.Dropdowncontainer}>
             <Dropdown
-              style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+              style={[styles.dropdown, isFocus && {borderColor: 'blue'}]}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
               inputSearchStyle={styles.inputSearchStyle}
@@ -188,7 +230,7 @@ const DrawerScreen = () => {
           </View>
           <View style={styles.Dropdowncontainer}>
             <Dropdown
-              style={[styles.dropdown, isFocusTwo && { borderColor: 'blue' }]}
+              style={[styles.dropdown, isFocusTwo && {borderColor: 'blue'}]}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
               inputSearchStyle={styles.inputSearchStyle}
@@ -200,7 +242,7 @@ const DrawerScreen = () => {
               valueField="value"
               placeholder={!isFocusTwo ? 'Select item' : '...'}
               searchPlaceholder="Search..."
-              value={value}
+              value={valueTwo}
               onFocus={() => setIsFocusTwo(true)}
               onBlur={() => setIsFocusTwo(false)}
               onChange={item => {
@@ -209,14 +251,11 @@ const DrawerScreen = () => {
               }}
             />
           </View>
-
         </View>
 
-        <View style={{ marginTop: 30 }}>
-
-        </View>
-      </ScrollView >
-    </View >
+        <View style={{marginTop: 30}}></View>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -232,6 +271,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 20,
+  },
+  DrawerButtonImage: {
+    width: '45%',
+    height: 70,
   },
   button: {
     backgroundColor: 'lightgrey',
@@ -279,6 +322,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 8,
   },
+  item: {
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
   icon: {
     marginRight: 5,
   },
@@ -293,7 +341,7 @@ const styles = StyleSheet.create({
   },
   placeholderStyle: {
     fontSize: 14,
-    color: Constant.colors.textColor
+    color: Constant.colors.textColor,
   },
   selectedTextStyle: {
     fontSize: 16,

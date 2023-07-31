@@ -190,7 +190,7 @@ const DrawerHeader = () => {
                     textAlign: 'center',
                     fontFamily: Constant.fontFamily,
                   }}>
-                  REGESTER
+                  REGISTER
                 </Text>
               </TouchableOpacity>
             </View>

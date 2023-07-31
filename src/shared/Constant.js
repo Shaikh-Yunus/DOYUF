@@ -1,7 +1,7 @@
 import { Dimensions } from "react-native"
 const Constant = {
     APP_NAME: 'Doyuf',
-    // BASE_URL:'http://qp.flymingotech.in/quarterpillars_backend/public/api/v1/',
+    BASE_URL:'https://doyuf.com/api/v1/',
     // BASE_IMAGE_URL:'http://qp.flymingotech.in/quarterpillars_backend/public/',
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
@@ -12,11 +12,11 @@ const Constant = {
         textColor: '#000000',
         whiteColor: '#FFFFFF',
     },
-    fontFamily: 'AvenirNextLTPro-Regular',
+    fontFamily: 'AvenirNextLTPro-Medium',
     AvenirNextLTProCn: 'AvenirNextLTPro-Cn',
     AvenirBold: 'AvenirNextLTPro-Bold',
     regular:'AvenirNextLTPro-Regular',
-    medium:'AvenirNextLTPro-MediumIt',
+    medium:'AvenirNextLTPro-Medium',
     // fontFamily: 'AvenirNextLTPro-BoldCn',
     Octicons: 'Octicons',
     borderRadius: 10,

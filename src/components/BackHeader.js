@@ -30,6 +30,7 @@ import LoginScreen from '../screens/front/LoginScreen';
 import RegisterScreen from '../screens/front/RegisterScreen';
 import ForgotPassword from '../screens/front/ForgotPassword';
 import {Dropdown} from 'react-native-element-dropdown';
+import OTPScreen from '../screens/front/OTPScreen';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -90,7 +91,16 @@ const BackHeader = ({disable, onSearch, onPressSearch, defaultView}) => {
   const closeforgotPasswordmodel = () => {
     setforgotPasswordvisible(false);
   };
-
+  // open otp model
+  const [otpmodelvisible, setOtpModelVisible] =
+    useState(false);
+  const openOtpModelVisible = () => {
+    setOtpModelVisible(true);
+    setModalVisible(false);
+  };
+  const closeOtpModelVisible = () => {
+    setOtpModelVisible(false);
+  };
   const toggleDrawer = () => {
     navigation.navigate('DrawerScreen');
   };
@@ -274,6 +284,7 @@ const BackHeader = ({disable, onSearch, onPressSearch, defaultView}) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={openregistrationmodel}
+                  // onPress={openOtpModelVisible}
                   style={styles.buttonregistor}>
                   <Text
                     style={{
@@ -570,8 +581,8 @@ const BackHeader = ({disable, onSearch, onPressSearch, defaultView}) => {
               flex: 1,
               justifyContent: 'center',
               alignItems: 'center',
-              paddingTop: 0,
-              paddingRight: 0,
+              // paddingTop: 0,
+              // paddingRight: 0,
               backgroundColor: 'rgba(0, 0, 0, 0.5)',
               height: '100%',
               width: '100%',
@@ -604,10 +615,10 @@ const BackHeader = ({disable, onSearch, onPressSearch, defaultView}) => {
             style={{
               flex: 1,
               justifyContent: 'flex-start',
-              alignItems: 'center',
-              paddingTop: 0,
-              paddingRight: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              // alignItems: 'center',
+              // paddingTop: 0,
+              // paddingRight: 0,
+              // backgroundColor: 'rgba(0, 0, 0, 0.5)',
               height: '100%',
               width: '100%',
             }}>
@@ -617,7 +628,7 @@ const BackHeader = ({disable, onSearch, onPressSearch, defaultView}) => {
                 borderRadius: 10,
                 padding: 20,
                 width: '100%',
-                height: '90%',
+                height: '95%',
               }}>
               <RegisterScreen
                 closeregistrationmodel={closeregistrationmodel}
@@ -650,7 +661,7 @@ const BackHeader = ({disable, onSearch, onPressSearch, defaultView}) => {
                 borderRadius: 10,
                 padding: 20,
                 width: '100%',
-                height: '40%',
+                height: '90%',
               }}>
               <ForgotPassword
                 closeforgotPasswordmodel={closeforgotPasswordmodel}
@@ -659,8 +670,38 @@ const BackHeader = ({disable, onSearch, onPressSearch, defaultView}) => {
             </View>
           </View>
         </Modal>
+        {/* otp modal */}
+        <Modal
+          visible={otpmodelvisible}
+          animationType="slide"
+          transparent>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              paddingTop: 0,
+              paddingRight: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              height: '100%',
+              width: '100%',
+            }}>
+            <View
+              style={{
+                backgroundColor: 'white',
+                borderRadius: 10,
+                padding: 20,
+                width: '100%',
+                height: '55%',
+              }}>
+              <OTPScreen
+                closeOtpModelVisible={closeOtpModelVisible}
+                openOtpModelVisible={openOtpModelVisible}
+              />
+            </View>
+          </View>
+        </Modal>
 
-        {/* Forgot Password modal */}
       </Pressable>
     </View>
   );
@@ -700,7 +741,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 14,
     color: 'black',
-    fontFamily: Constant.fontFamily,
+    fontFamily: Constant.medium,
   },
   //  profile model styling
 

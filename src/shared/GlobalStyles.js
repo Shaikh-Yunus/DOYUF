@@ -23,13 +23,14 @@ const GlobalStyles = {
         borderColor: '#ccc',
         borderRadius: 5,
         paddingHorizontal: 10,
+        fontFamily:Constant.medium,
         marginTop: 20,
     },
     textInput: {
         // flex: 1,
         fontSize: 16,
         color: '#000',
-        fontFamily:Constant.fontFamily
+        fontFamily:Constant.medium
     },
     backgroundImage: {
         height: '100%',
